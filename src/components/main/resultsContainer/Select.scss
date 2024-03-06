@@ -1,0 +1,11 @@
+@use "../../../styles/variables.scss" as *;
+
+.main__results_sort {
+	background: $background;
+	color: $yellow-300;
+	font-size: 1rem;
+	border: none;
+	&:focus {
+		outline: none;
+	}
+}

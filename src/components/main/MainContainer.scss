@@ -1,0 +1,22 @@
+@use "../../styles/variables.scss" as *;
+@use "../../styles/mixins.scss" as *;
+
+.main {
+	flex-grow: 1;
+	padding-top: 5rem;
+	@include for-sizes-up-from(md) {
+		padding-top: 10rem;
+	}
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 2rem;
+	position: relative;
+
+	&__results_container {
+		align-self: flex-start;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+	}
+}

@@ -1,0 +1,22 @@
+@use "../../../styles/variables.scss" as *;
+@use "../../../styles/mixins.scss" as *;
+
+.main__results {
+	&_container {
+		border-top: 1px solid $background-active;
+		width: 100%;
+		padding-top: 2rem;
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+		margin: 2rem 0 1rem 0;
+	}
+
+	&_item-query {
+		margin-bottom: 1rem;
+		color: $white;
+		& span {
+			color: $yellow-300;
+		}
+	}
+}

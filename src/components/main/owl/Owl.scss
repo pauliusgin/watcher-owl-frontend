@@ -1,0 +1,19 @@
+@use "../../../styles/mixins.scss" as *;
+
+.main__owl {
+	height: 200px;
+	position: absolute;
+	left: -12.8rem;
+	top: 5rem;
+	transform: rotate(-90deg);
+	z-index: -1;
+	transition: all 0.5s ease;
+
+	@include for-sizes-up-from(sm) {
+		left: -11rem;
+		transform: rotate(30deg);
+	}
+	@include for-sizes-up-from(md) {
+		left: -7rem;
+	}
+}

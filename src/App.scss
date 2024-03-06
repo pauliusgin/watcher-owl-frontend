@@ -1,0 +1,19 @@
+@use "./styles/reset.scss";
+@use "./styles/text.scss";
+@use "./styles/variables.scss" as *;
+
+body {
+	background-color: $background;
+	padding: 0 2rem;
+	min-width: 400px;
+}
+
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+.hidden {
+	display: none;
+}
