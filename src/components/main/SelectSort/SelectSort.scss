@@ -3,6 +3,8 @@
 .main__results_sort {
 	background: $background;
 	color: $yellow-300;
+	text-align: center;
+	width: fit-content;
 	font-size: 1rem;
 	border: none;
 	&:focus {

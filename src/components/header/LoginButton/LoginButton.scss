@@ -1,0 +1,6 @@
+@use "../../../styles/mixins.scss" as *;
+
+.login__button {
+	@include buttonDefault;
+	@include buttonDark;
+}

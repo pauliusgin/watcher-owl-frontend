@@ -1,6 +1,6 @@
 import "./UserAccountButton.scss";
-import { Button } from "../shared/Button.tsx";
-import { userAccountAction } from "../../utils/userAccountUtils.ts";
+import { Button } from "../../shared/Button.tsx";
+import { userAccountAction } from "../../../utils/userAccountUtils.ts";
 
 const UserAccountButton = () => {
 	return (

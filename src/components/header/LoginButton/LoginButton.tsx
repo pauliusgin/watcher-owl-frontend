@@ -1,7 +1,7 @@
 import "./LoginButton.scss";
 
-import { Button } from "../shared/Button.tsx";
-import { loginAction } from "../../utils/loginUtils.ts";
+import { Button } from "../../shared/Button.tsx";
+import { loginAction } from "../../../utils/loginUtils.ts";
 
 const LoginButton = () => {
 	return (

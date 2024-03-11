@@ -1,7 +1,7 @@
 import "./ResultsContainer.scss";
-import { Select } from "./Select";
+import { SelectSort } from "../SelectSort/SelectSort";
 // types
-import { TypeResultsContainer } from "../../../types/ResultTypes";
+import { TypeResultsContainer } from "../../../types/ResultType";
 
 function ResultsContainer({
 	searchQuery,
@@ -13,10 +13,10 @@ function ResultsContainer({
 		data.length > 0 && (
 			<div className="main__results_container">
 				<div className="main__results_sort-container">
-					<Select />
+					<SelectSort />
 				</div>
 				<p className="main__results_item-query">
-					Rodomi rezultatai užklausai:
+					{`Rodomi rezultatai (${data.length}) užklausai:`}
 					<br />
 					<span>{searchQuery?.join(", ")}</span>
 				</p>

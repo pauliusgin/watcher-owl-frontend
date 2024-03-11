@@ -1,0 +1,6 @@
+@use "../../../styles/mixins.scss" as *;
+
+.user__history_button {
+	@include buttonDefault;
+	@include buttonDark;
+}

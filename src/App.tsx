@@ -1,7 +1,7 @@
 import "./App.scss";
-import { Header } from "./components/header/Header.tsx";
-import { Main } from "./components/main/MainContainer.tsx";
-import { Footer } from "./components/footer/Footer.tsx";
+import { Header } from "./components/header/HeaderContainer/HeaderContainer.tsx";
+import { Main } from "./components/main/MainContainer/MainContainer.tsx";
+import { Footer } from "./components/footer/FooterContainer/FooterContainer.tsx";
 
 function App() {
 	return (

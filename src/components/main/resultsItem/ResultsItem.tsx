@@ -1,6 +1,6 @@
 import "./ResultsItem.scss";
 // types
-import { TypeResultsItem } from "../../../types/ResultTypes";
+import { TypeResultsItem } from "../../../types/ResultType";
 
 function ResultsItem({
 	title,
