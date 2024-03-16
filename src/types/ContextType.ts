@@ -6,4 +6,6 @@ export type TypeContext = {
 	setData: Dispatch<SetStateAction<TypeResultsItem[] | undefined>>;
 	searchQuery: string[] | null;
 	setSearchQuery: Dispatch<SetStateAction<string[] | null>>;
+	isLoading: boolean;
+	setIsLoading: Dispatch<SetStateAction<boolean>>;
 };

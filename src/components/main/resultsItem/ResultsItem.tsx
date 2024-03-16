@@ -14,7 +14,7 @@ function ResultsItem({
 		<div className="main__results_item">
 			<div className="main__results_item-image">
 				<a href={url} target="_blank">
-					<img src={photo.thumbnails[0].url} alt="pirma-foto" loading="lazy" />
+					<img src={photo} alt="pirma-foto" loading="lazy" />
 				</a>
 			</div>
 			<div className="main__results_item-description">

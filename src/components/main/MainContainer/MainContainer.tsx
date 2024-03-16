@@ -4,6 +4,7 @@ import "./MainContainer.scss";
 // components
 import { Title } from "../Title/Title.tsx";
 import { Owl } from "../Owl/Owl.tsx";
+import { LoadingAnimation } from "../LoadingAnimation/LoadingAnimation.tsx";
 import { SearchForm } from "../SearchForm/SearchForm.tsx";
 import { ResultsContainer } from "../ResultsContainer/ResultsContainer.tsx";
 import { ResultsItem } from "../ResultsItem/ResultsItem.tsx";
@@ -13,7 +14,7 @@ import { TypeResultsItem } from "../../../types/ResultType.ts";
 import { TypeContext } from "../../../types/ContextType.ts";
 
 const Main = () => {
-	const { searchQuery, data }: TypeContext = useContext(Context);
+	const { searchQuery, data, isLoading }: TypeContext = useContext(Context);
 
 	if (searchQuery?.length === 0) {
 		return (
@@ -24,7 +25,20 @@ const Main = () => {
 				<p>{`Užklausą turi sudaryti bent trys raidės`}</p>
 			</main>
 		);
-	} else if (data?.length === 0) {
+	}
+
+	if (isLoading) {
+		return (
+			<main className="main">
+				<Owl />
+				<Title />
+				<SearchForm />
+				<LoadingAnimation />
+			</main>
+		);
+	}
+
+	if (data && data.length === 0) {
 		return (
 			<main className="main">
 				<Owl />

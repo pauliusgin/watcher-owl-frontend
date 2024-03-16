@@ -1,15 +1,16 @@
 import { ReactNode } from "react";
 
-type TypeUrl = {
-	url: string;
-};
+// type TypeUrl = {
+// 	url: string;
+// };
 
 export type TypeResultsItem = {
 	id?: number;
 	title: string;
-	photo: {
-		thumbnails: TypeUrl[];
-	};
+	photo: string;
+	// photo: {
+	// 	thumbnails: TypeUrl[];
+	// };
 	price: number;
 	currency?: string;
 	status: string;
