@@ -1,4 +1,8 @@
-import { TypeResultsItem } from "../types/ResultType";
+// import { TypeResultsItem } from "../types/resultDataTypes";
+
+import { resultsItemType } from "../types/resultsDataTypes";
+
+// import { resultsItemType } from "../types/resultDataTypes";
 
 export const statusMap: { [status: string]: number } = {
 	"Nauja su etiketėmis": 0,
@@ -8,7 +12,7 @@ export const statusMap: { [status: string]: number } = {
 	Patenkinama: 4,
 };
 
-export function sortingItems(array: TypeResultsItem[], sortingMethod: string) {
+export function sortingItems(array: resultsItemType[], sortingMethod: string) {
 	let sortedItems;
 
 	switch (sortingMethod) {

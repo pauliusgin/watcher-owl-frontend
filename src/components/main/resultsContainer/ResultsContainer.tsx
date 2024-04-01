@@ -1,19 +1,20 @@
 import "./ResultsContainer.scss";
-import { SelectSort } from "../SelectSort/SelectSort";
+import { SortingMenu } from "../SortingMenu/SortingMenu";
+
 // types
-import { TypeResultsContainer } from "../../../types/ResultType";
+import { resultsContainerType } from "../../../types/resultsDataTypes";
 
 function ResultsContainer({
 	searchQuery,
 	data,
 	children,
-}: TypeResultsContainer) {
+}: resultsContainerType) {
 	return (
 		data &&
 		data.length > 0 && (
 			<div className="main__results_container">
 				<div className="main__results_sort-container">
-					<SelectSort />
+					<SortingMenu />
 				</div>
 				<p className="main__results_item-query">
 					{`Rodomi rezultatai (${data.length}) užklausai:`}

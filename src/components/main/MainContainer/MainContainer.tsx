@@ -8,13 +8,15 @@ import { LoadingAnimation } from "../LoadingAnimation/LoadingAnimation.tsx";
 import { SearchForm } from "../SearchForm/SearchForm.tsx";
 import { ResultsContainer } from "../ResultsContainer/ResultsContainer.tsx";
 import { ResultsItem } from "../ResultsItem/ResultsItem.tsx";
-import { Context } from "../../../context/Context.tsx";
+import { DataContext } from "../../../context/DataContext.tsx";
+
 // types
-import { TypeResultsItem } from "../../../types/ResultType.ts";
-import { TypeContext } from "../../../types/ContextType.ts";
+import { dataContextType } from "../../../types/contextTypes";
+import { resultsItemType } from "../../../types/resultsDataTypes";
 
 const Main = () => {
-	const { searchQuery, data, isLoading }: TypeContext = useContext(Context);
+	const { searchQuery, data, isLoading }: dataContextType =
+		useContext(DataContext);
 
 	if (searchQuery?.length === 0) {
 		return (
@@ -58,7 +60,7 @@ const Main = () => {
 			<Title />
 			<SearchForm />
 			<ResultsContainer searchQuery={searchQuery} data={data}>
-				{data?.map((item: TypeResultsItem) => (
+				{data?.map((item: resultsItemType) => (
 					<ResultsItem
 						key={item.id}
 						title={item.title}

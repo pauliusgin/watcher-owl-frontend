@@ -1,6 +1,6 @@
 async function contactProxy(searchQuery: string[]) {
 	try {
-		const response = await fetch("http://localhost:3000/proxy", {
+		const response = await fetch("http://localhost:4000/api/proxy", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",

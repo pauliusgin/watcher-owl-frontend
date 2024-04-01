@@ -1,15 +1,15 @@
-import { SyntheticEvent, useContext, useRef } from "react";
-import { Context } from "../../../context/Context";
+import { useContext, useState, SyntheticEvent } from "react";
+import { DataContext } from "../../../context/DataContext";
 import "./SearchForm.scss";
 
 const SearchForm = () => {
-	const { setSearchQuery } = useContext(Context);
-	const inputRef = useRef<HTMLInputElement>(null);
+	const { setSearchQuery } = useContext(DataContext);
+	const [inputText, setInputText] = useState<string | null>("");
+	// todo redo inputRef into useState
 
 	function handleSearchQuery(event: SyntheticEvent) {
 		event.preventDefault();
 
-		const inputText: string | null = inputRef.current?.value ?? null;
 		const inputTextArray: string[] | null = inputText
 			? inputText
 					.replaceAll(/\W/g, " ")
@@ -18,12 +18,10 @@ const SearchForm = () => {
 			: null;
 
 		console.log("input:", inputText);
+		console.log("search query set to:", inputTextArray);
 
 		setSearchQuery(inputTextArray);
-		console.log("search query set to:", inputTextArray);
-		if (inputRef.current) {
-			inputRef.current.value = "";
-		}
+		setInputText("");
 	}
 
 	return (
@@ -48,7 +46,10 @@ const SearchForm = () => {
 				className="search__form_input"
 				id="search__input"
 				type="text"
-				ref={inputRef}
+				value={inputText ?? ""}
+				onChange={(event) => {
+					setInputText(event.target.value);
+				}}
 				title="Ieškoti"
 				placeholder="Ieškokite..."
 				autoComplete="off"

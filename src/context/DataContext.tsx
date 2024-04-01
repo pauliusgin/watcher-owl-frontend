@@ -1,12 +1,12 @@
 import { createContext, useState, useEffect } from "react";
 import { ReactNode } from "react";
-
 import { contactProxy } from "../services/contactProxy.ts";
-// types
-import { TypeContext } from "../types/ContextType.ts";
-import { TypeResultsItem } from "../types/ResultType.ts";
 
-const Context = createContext<TypeContext>({
+// types
+import { dataContextType } from "../types/contextTypes";
+import { resultsItemType } from "../types/resultsDataTypes";
+
+const DataContext = createContext<dataContextType>({
 	data: undefined,
 	setData: () => {},
 	searchQuery: null,
@@ -15,8 +15,8 @@ const Context = createContext<TypeContext>({
 	setIsLoading: () => {},
 });
 
-function ContextProvider({ children }: { children: ReactNode }) {
-	const [data, setData] = useState<TypeResultsItem[] | undefined>(undefined);
+function DataContextProvider({ children }: { children: ReactNode }) {
+	const [data, setData] = useState<resultsItemType[] | undefined>(undefined);
 	const [searchQuery, setSearchQuery] = useState<string[] | null>(null);
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -33,7 +33,7 @@ function ContextProvider({ children }: { children: ReactNode }) {
 	}, [searchQuery]);
 
 	return (
-		<Context.Provider
+		<DataContext.Provider
 			value={{
 				data,
 				setData,
@@ -44,8 +44,8 @@ function ContextProvider({ children }: { children: ReactNode }) {
 			}}
 		>
 			{children}
-		</Context.Provider>
+		</DataContext.Provider>
 	);
 }
 
-export { Context, ContextProvider };
+export { DataContext, DataContextProvider };

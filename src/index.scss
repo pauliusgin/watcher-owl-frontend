@@ -17,3 +17,12 @@ body {
 .hidden {
 	display: none;
 }
+
+.page {
+	height: 90vh;
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+	justify-content: center;
+	align-items: center;
+}

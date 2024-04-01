@@ -1,10 +1,10 @@
-import "./SelectSort.scss";
+import "./SortingMenu.scss";
 import { useContext, ChangeEvent } from "react";
-import { Context } from "../../../context/Context";
+import { DataContext } from "../../../context/DataContext";
 import { sortingItems } from "../../../utils/sortingUtils";
 
-function SelectSort() {
-	const { data, setData } = useContext(Context);
+function SortingMenu() {
+	const { data, setData } = useContext(DataContext);
 
 	function handleSortingItems(event: ChangeEvent<HTMLSelectElement>) {
 		const sortValue = event.target.value;
@@ -57,4 +57,4 @@ function SelectSort() {
 	);
 }
 
-export { SelectSort };
+export { SortingMenu };

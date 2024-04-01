@@ -1,4 +1,4 @@
-export type TypeSortingMethod =
+type sortingMethodType =
 	| "priceFromLowest"
 	| "priceFromHighest"
 	| "titleA-Z"

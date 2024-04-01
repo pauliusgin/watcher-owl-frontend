@@ -1,23 +1,16 @@
 import { ReactNode } from "react";
 
-// type TypeUrl = {
-// 	url: string;
-// };
-
-export type TypeResultsItem = {
+type resultsItemType = {
 	id?: number;
 	title: string;
 	photo: string;
-	// photo: {
-	// 	thumbnails: TypeUrl[];
-	// };
 	price: number;
 	currency?: string;
 	status: string;
 	url?: string;
 };
 
-export type TypeResultsContainer = {
+type resultsContainerType = {
 	searchQuery: string[] | null;
 	data: TypeResultsItem[] | undefined;
 	children: ReactNode;

@@ -1,6 +1,7 @@
 import "./ResultsItem.scss";
+
 // types
-import { TypeResultsItem } from "../../../types/ResultType";
+import { resultsItemType } from "../../../types/resultsDataTypes";
 
 function ResultsItem({
 	title,
@@ -9,7 +10,7 @@ function ResultsItem({
 	currency,
 	status,
 	url,
-}: TypeResultsItem) {
+}: resultsItemType) {
 	return (
 		<div className="main__results_item">
 			<div className="main__results_item-image">
