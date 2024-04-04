@@ -2,7 +2,6 @@
 @use "../../../styles/mixins.scss" as *;
 
 .main {
-	flex-grow: 1;
 	padding-top: 5rem;
 	@include for-sizes-up-from(md) {
 		padding-top: 10rem;

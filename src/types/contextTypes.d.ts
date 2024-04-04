@@ -11,3 +11,8 @@ type dataContextType = {
 	isLoading: boolean;
 	setIsLoading: Dispatch<SetStateAction<boolean>>;
 };
+
+type userContextType = {
+	loggedIn: boolean;
+	setLoggedIn: Dispatch<SetStateAction<boolean>>;
+};

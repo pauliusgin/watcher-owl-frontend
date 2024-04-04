@@ -2,24 +2,24 @@ import { useContext } from "react";
 import { UserContext } from "../../../context/UserContext.tsx";
 // types
 import { userContextType } from "../../../types/contextTypes";
-import "./LoginButton.scss";
+import "./LogoutButton.scss";
 
 import { Button } from "../../shared/Button.tsx";
 
-const LoginButton = () => {
+const LogoutButton = () => {
 	const { setLoggedIn }: userContextType = useContext(UserContext);
 
 	return (
 		<Button
 			onClick={() => {
-				setLoggedIn(true);
+				setLoggedIn(false);
 			}}
 			className="login__button button"
 			title="Login"
 		>
-			Prisijungti
+			Atsijungti
 		</Button>
 	);
 };
 
-export { LoginButton };
+export { LogoutButton };

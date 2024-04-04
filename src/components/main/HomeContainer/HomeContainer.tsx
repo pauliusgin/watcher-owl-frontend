@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import "./MainContainer.scss";
+import "./HomeContainer.scss";
 
 // components
 import { Title } from "../Title/Title.tsx";
@@ -14,7 +14,7 @@ import { DataContext } from "../../../context/DataContext.tsx";
 import { dataContextType } from "../../../types/contextTypes";
 import { resultsItemType } from "../../../types/resultsDataTypes";
 
-const Main = () => {
+const Home = () => {
 	const { searchQuery, data, isLoading }: dataContextType =
 		useContext(DataContext);
 
@@ -76,4 +76,4 @@ const Main = () => {
 	);
 };
 
-export { Main };
+export { Home };

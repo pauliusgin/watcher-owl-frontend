@@ -8,10 +8,17 @@ body {
 	min-width: 400px;
 }
 
-.wrapper {
+#wrapper {
 	display: flex;
 	flex-direction: column;
 	min-height: 100vh;
+
+	&__main {
+		flex-grow: 1;
+	}
+	&__footer {
+		flex-shrink: 0;
+	}
 }
 
 .hidden {

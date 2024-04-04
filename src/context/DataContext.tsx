@@ -1,7 +1,5 @@
-import { createContext, useState, useEffect } from "react";
-import { ReactNode } from "react";
+import { createContext, useState, useEffect, ReactNode } from "react";
 import { contactProxy } from "../services/contactProxy.ts";
-
 // types
 import { dataContextType } from "../types/contextTypes";
 import { resultsItemType } from "../types/resultsDataTypes";

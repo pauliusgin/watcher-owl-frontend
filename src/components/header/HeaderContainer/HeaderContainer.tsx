@@ -2,7 +2,7 @@ import "./HeaderContainer.scss";
 import { NavLink } from "react-router-dom";
 
 import { LoginButton } from "../LoginButton/LoginButton.tsx";
-import { UserMenuButton } from "../UserAccountButton/UserMenuButton.tsx";
+import { LogoutButton } from "../LogoutButton/LoginButton.tsx";
 
 const Header = () => {
 	return (
@@ -16,7 +16,7 @@ const Header = () => {
 						<NavLink to="/tasks">Užduotys</NavLink>
 					</li>
 					<li className="header__nav__list-item">
-						<UserMenuButton />
+						<LogoutButton />
 					</li>
 					<li className="header__nav__list-item">
 						<LoginButton />
