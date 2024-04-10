@@ -4,7 +4,7 @@ import { UserContext } from "../../../context/UserContext.tsx";
 import { userContextType } from "../../../types/contextTypes";
 import "./LogoutButton.scss";
 
-import { Button } from "../../shared/Button.tsx";
+import { Button } from "../../shared/Button/Button.tsx";
 
 const LogoutButton = () => {
 	const { setLoggedIn }: userContextType = useContext(UserContext);

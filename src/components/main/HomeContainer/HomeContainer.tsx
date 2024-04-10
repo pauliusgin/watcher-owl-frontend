@@ -3,8 +3,8 @@ import "./HomeContainer.scss";
 
 // components
 import { Title } from "../Title/Title.tsx";
-import { Owl } from "../Owl/Owl.tsx";
-import { LoadingAnimation } from "../LoadingAnimation/LoadingAnimation.tsx";
+import { Owl } from "../../shared/Owl/Owl.tsx";
+import { LoadingAnimation } from "../../shared/LoadingAnimation/LoadingAnimation.tsx";
 import { SearchForm } from "../SearchForm/SearchForm.tsx";
 import { ResultsContainer } from "../ResultsContainer/ResultsContainer.tsx";
 import { ResultsItem } from "../ResultsItem/ResultsItem.tsx";

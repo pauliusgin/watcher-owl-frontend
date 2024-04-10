@@ -1,5 +1,5 @@
 import "./UserMenuButton.scss";
-import { Button } from "../../shared/Button.tsx";
+import { Button } from "../../shared/Button/Button.tsx";
 import { userMenuAction } from "../../../utils/userMenuUtils.ts";
 
 const UserMenuButton = () => {

@@ -1,5 +1,5 @@
 import "./TasksButton.scss";
-import { Button } from "../../shared/Button.tsx";
+import { Button } from "../../shared/Button/Button.tsx";
 import { tasksAction } from "../../../utils/tasksUtils.ts";
 
 const TasksButton = () => {
