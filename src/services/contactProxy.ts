@@ -1,6 +1,8 @@
+import { config } from "../../cfg/config";
+
 async function contactProxy(searchQuery: string[]) {
 	try {
-		const response = await fetch("http://localhost:4000/api/proxy", {
+		const response = await fetch(`${config.backend.server}/api/proxy`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
