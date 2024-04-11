@@ -6,14 +6,17 @@
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
-	&__nav__list {
-		display: flex;
-		gap: 1rem;
-
-		&-item {
-			a.active {
-				color: $yellow-300;
-			}
-		}
+	&__placeholder {
+		color: $foreground-placeholder;
 	}
+	// &__nav__list {
+	// 	display: flex;
+	// 	gap: 1rem;
+
+	// 	&-item {
+	// 		a.active {
+	// 			color: $yellow-300;
+	// 		}
+	// 	}
+	// }
 }

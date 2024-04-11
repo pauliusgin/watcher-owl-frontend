@@ -1,13 +1,14 @@
 import "./HeaderContainer.scss";
-import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
 
-import { LoginButton } from "../LoginButton/LoginButton.tsx";
-import { LogoutButton } from "../LogoutButton/LoginButton.tsx";
+// import { LoginButton } from "../LoginButton/LoginButton.tsx";
+// import { LogoutButton } from "../LogoutButton/LoginButton.tsx";
 
 const Header = () => {
 	return (
 		<header className="header">
-			<nav className="header__nav" role="navigation">
+			<div className="header__placeholder">This is a header.</div>
+			{/* <nav className="header__nav" role="navigation">
 				<ul className="header__nav__list">
 					<li className="header__nav__list-item">
 						<NavLink to="/">Pagrindinis</NavLink>
@@ -22,7 +23,7 @@ const Header = () => {
 						<LoginButton />
 					</li>
 				</ul>
-			</nav>
+			</nav> */}
 		</header>
 	);
 };
