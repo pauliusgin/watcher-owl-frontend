@@ -1,6 +1,6 @@
 import "./ResultsContainer.scss";
 import { useContext } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import { SortingMenu } from "../SortingMenu/SortingMenu";
 import { LoadingAnimation } from "../../shared/LoadingAnimation/LoadingAnimation";
 import { DataContext } from "../../../context/DataContext";
@@ -8,8 +8,10 @@ import { DataContext } from "../../../context/DataContext";
 import { dataContextType } from "../../../types/contextTypes";
 
 function ResultsContainer() {
-	const { searchQuery, data, isLoading }: dataContextType =
+	const { searchQuery, data, sessionData, isLoading }: dataContextType =
 		useContext(DataContext);
+
+	const location = useLocation();
 
 	if (searchQuery?.length === 0) {
 		return <p>{`Užklausą turi sudaryti bent trys raidės`}</p>;
@@ -39,10 +41,12 @@ function ResultsContainer() {
 					<SortingMenu />
 				</div>
 				<p className="main__results_item-query">
-					{`Rodomi rezultatai (${data.length}) užklausai:`}
+					{`Rodomi rezultatai (${
+						data === sessionData ? data.length : sessionData?.length
+					}) užklausai:`}
 					<br />
 					<span className="main__results_query-span">
-						{searchQuery?.join(", ")}
+						{location.state.sessionName.replaceAll("+", ", ")}
 					</span>
 				</p>
 				<Outlet />

@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { App } from "./App.tsx";
+import { router } from "./router.tsx";
 import { RouterProvider } from "react-router-dom";
 import { DataContextProvider } from "./context/DataContext.tsx";
 import { UserContextProvider } from "./context/UserContext.tsx";
@@ -10,7 +10,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
 	<React.StrictMode>
 		<UserContextProvider>
 			<DataContextProvider>
-				<RouterProvider router={App} />
+				<RouterProvider router={router} />
 			</DataContextProvider>
 		</UserContextProvider>
 	</React.StrictMode>

@@ -4,15 +4,22 @@ import { DataContext } from "../../../context/DataContext";
 import { sortingItems } from "../../../utils/sortingUtils";
 
 function SortingMenu() {
-	const { data, setData } = useContext(DataContext);
+	const { data, setData, sessionData, setSessionData } =
+		useContext(DataContext);
 
 	function handleSortingItems(event: ChangeEvent<HTMLSelectElement>) {
 		const sortValue = event.target.value;
-		console.log("Sorting by:", sortValue);
+		//* this comment is to be deleted
+		// console.log("Sorting by:", sortValue);
 
 		if (data) {
 			const sortedItems = sortingItems(data, sortValue);
 			setData(sortedItems);
+		}
+
+		if (sessionData) {
+			const sortedItems = sortingItems(sessionData, sortValue);
+			setSessionData(sortedItems);
 		}
 	}
 

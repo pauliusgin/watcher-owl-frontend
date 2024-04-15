@@ -20,7 +20,6 @@ function DataContextProvider({ children }: { children: ReactNode }) {
 	const [sessionData, setSessionData] = useState<
 		resultsItemType[] | [] | undefined
 	>(undefined);
-
 	const [searchQuery, setSearchQuery] = useState<string[] | null>(null);
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -32,7 +31,13 @@ function DataContextProvider({ children }: { children: ReactNode }) {
 				const results = await contactProxy(searchQuery);
 
 				setData(results);
-				setSessionData(results);
+
+				if (results) {
+					sessionStorage.setItem(
+						`${searchQuery.toString().replaceAll(",", "+")}`,
+						JSON.stringify(results)
+					);
+				}
 
 				setIsLoading(false);
 			}
@@ -41,13 +46,15 @@ function DataContextProvider({ children }: { children: ReactNode }) {
 	}, [searchQuery]);
 
 	useEffect(() => {
-		if (sessionData) {
-			sessionStorage.setItem(
-				`${searchQuery?.toString().replaceAll(",", "+")}`,
-				JSON.stringify(sessionData)
-			);
-		}
-	}, [sessionData, searchQuery]);
+		const dataOnPageReload = JSON.parse(
+			sessionStorage.getItem(`${location.search.slice(1)}`) as string
+		);
+		setData(dataOnPageReload);
+	}, []);
+
+	//* this comment is to be deleted
+	// console.log("fetched data:", data);
+	// console.log("session data:", sessionData);
 
 	return (
 		<DataContext.Provider

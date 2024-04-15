@@ -11,7 +11,7 @@ import { TasksPage } from "./pages/TasksPage/TasksPage.tsx";
 import { ResultsContainer } from "./components/main/ResultsContainer/ResultsContainer.tsx";
 import { ResultsItem } from "./components/main/ResultsItem/ResultsItem.tsx";
 
-const App = createBrowserRouter(
+const router = createBrowserRouter(
 	createRoutesFromElements(
 		<Route path="/" element={<Root />} errorElement={<ErrorPage />}>
 			<Route path="/" element={<HomePage />}>
@@ -25,4 +25,4 @@ const App = createBrowserRouter(
 	)
 );
 
-export { App };
+export { router };
