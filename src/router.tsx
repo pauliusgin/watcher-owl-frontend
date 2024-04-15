@@ -4,15 +4,25 @@ import {
 	Route,
 } from "react-router-dom";
 import { Root } from "./routes/Root.tsx";
-import { ErrorPage } from "./pages/ErrorPage.tsx";
-import { Home } from "./components/main/HomeContainer/HomeContainer.tsx";
-import { Tasks } from "./components/main/TasksContainer/TasksContainer.tsx";
+import { ErrorPage } from "./pages/ErrorPage/ErrorPage.tsx";
+import { LoginPage } from "./pages/LoginPage/LoginPage.tsx";
+import { HomePage } from "./pages/HomePage/HomePage.tsx";
+import { TasksPage } from "./pages/TasksPage/TasksPage.tsx";
+import { ResultsContainer } from "./components/main/ResultsContainer/ResultsContainer.tsx";
+import { ResultsItem } from "./components/main/ResultsItem/ResultsItem.tsx";
 
-export const router = createBrowserRouter(
+const router = createBrowserRouter(
 	createRoutesFromElements(
 		<Route path="/" element={<Root />} errorElement={<ErrorPage />}>
-			<Route path="/" element={<Home />} />
-			<Route path="/tasks" element={<Tasks />} />
+			<Route path="/" element={<HomePage />}>
+				<Route path="/results" element={<ResultsContainer />}>
+					<Route path="/results/*" element={<ResultsItem />} />
+				</Route>
+			</Route>
+			<Route path="/login" element={<LoginPage />} />
+			<Route path="/tasks" element={<TasksPage />} />
 		</Route>
 	)
 );
+
+export { router };

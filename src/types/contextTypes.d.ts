@@ -6,6 +6,8 @@ import { resultsItemType } from "./resultsDataTypes";
 type dataContextType = {
 	data: resultsItemType[] | undefined;
 	setData: Dispatch<SetStateAction<TypeResultsItem[] | undefined>>;
+	sessionData: resultsItemType[] | [] | undefined;
+	setSessionData: Dispatch<SetStateAction<TypeResultsItem[] | [] | undefined>>;
 	searchQuery: string[] | null;
 	setSearchQuery: Dispatch<SetStateAction<string[] | null>>;
 	isLoading: boolean;

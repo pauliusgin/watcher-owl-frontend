@@ -1,14 +1,38 @@
 import "./ResultsContainer.scss";
+import { useContext } from "react";
+import { Outlet, useLocation } from "react-router-dom";
 import { SortingMenu } from "../SortingMenu/SortingMenu";
-
+import { LoadingAnimation } from "../../shared/LoadingAnimation/LoadingAnimation";
+import { DataContext } from "../../../context/DataContext";
 // types
-import { resultsContainerType } from "../../../types/resultsDataTypes";
+import { dataContextType } from "../../../types/contextTypes";
 
-function ResultsContainer({
-	searchQuery,
-	data,
-	children,
-}: resultsContainerType) {
+function ResultsContainer() {
+	const { searchQuery, data, sessionData, isLoading }: dataContextType =
+		useContext(DataContext);
+
+	const location = useLocation();
+
+	if (searchQuery?.length === 0) {
+		return <p>{`Užklausą turi sudaryti bent trys raidės`}</p>;
+	}
+
+	if (isLoading) {
+		return <LoadingAnimation />;
+	}
+
+	if (data && data.length === 0) {
+		return (
+			<p>
+				{`Pagal užklausą `}
+				<span className="main__results_query-span">
+					{searchQuery?.join(", ")}
+				</span>
+				{` rezultatų nerasta.`}
+			</p>
+		);
+	}
+
 	return (
 		data &&
 		data.length > 0 && (
@@ -17,11 +41,15 @@ function ResultsContainer({
 					<SortingMenu />
 				</div>
 				<p className="main__results_item-query">
-					{`Rodomi rezultatai (${data.length}) užklausai:`}
+					{`Rodomi rezultatai (${
+						data === sessionData ? data.length : sessionData?.length
+					}) užklausai:`}
 					<br />
-					<span>{searchQuery?.join(", ")}</span>
+					<span className="main__results_query-span">
+						{location.state.sessionName.replaceAll("+", ", ")}
+					</span>
 				</p>
-				{children}
+				<Outlet />
 			</div>
 		)
 	);

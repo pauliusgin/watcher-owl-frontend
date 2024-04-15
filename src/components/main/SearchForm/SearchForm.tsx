@@ -1,11 +1,12 @@
 import { useContext, useState, SyntheticEvent } from "react";
+import { useNavigate } from "react-router-dom";
 import { DataContext } from "../../../context/DataContext";
 import "./SearchForm.scss";
 
 const SearchForm = () => {
 	const { setSearchQuery } = useContext(DataContext);
 	const [inputText, setInputText] = useState<string | null>("");
-	// todo redo inputRef into useState
+	const navigate = useNavigate();
 
 	function handleSearchQuery(event: SyntheticEvent) {
 		event.preventDefault();
@@ -17,11 +18,17 @@ const SearchForm = () => {
 					.filter((word) => word.trim().length > 2)
 			: null;
 
-		console.log("input:", inputText);
-		console.log("search query set to:", inputTextArray);
+		// console.log("input:", inputText);
+		// console.log("search query set to:", inputTextArray);
 
 		setSearchQuery(inputTextArray);
 		setInputText("");
+
+		const sessionName = inputTextArray?.join("+");
+
+		navigate(`/results/search?${sessionName}`, {
+			state: { sessionName },
+		});
 	}
 
 	return (
