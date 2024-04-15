@@ -1,6 +1,6 @@
 import "./HeaderContainer.scss";
 import { NavLink } from "react-router-dom";
-import { LogoutButton } from "../LogoutButton/LogoutButton.tsx";
+// import { LogoutButton } from "../LogoutButton/LogoutButton.tsx";
 
 const Header = () => {
 	return (
@@ -11,12 +11,12 @@ const Header = () => {
 					<li className="header__nav__list-item">
 						<NavLink to="/">Pagrindinis</NavLink>
 					</li>
-					<li className="header__nav__list-item">
+					{/* <li className="header__nav__list-item">
 						<NavLink to="/tasks">Užduotys</NavLink>
-					</li>
-					<li className="header__nav__list-item">
+					</li> */}
+					{/* <li className="header__nav__list-item">
 						<LogoutButton />
-					</li>
+					</li> */}
 					<li className="header__nav__list-item">
 						<NavLink to="/login">Prisijungti</NavLink>
 					</li>

@@ -1,15 +1,11 @@
-import { Button } from "../../components/shared/Button/Button";
+import "./LoginPage.scss";
+import { GoogleLoginButton } from "../../components/header/GoogleLoginButton/GoogleLoginButton";
 
 function LoginPage() {
 	return (
 		<div className="page" id="login-page">
-			<Button
-				onClick={() => {}}
-				className="google__button button"
-				title="Login"
-			>
-				Prisijungti su Google
-			</Button>
+			<GoogleLoginButton />
+			<p>(funkcionalumas ruošiamas)</p>
 		</div>
 	);
 }

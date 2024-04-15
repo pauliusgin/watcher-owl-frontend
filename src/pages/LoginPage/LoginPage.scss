@@ -1,6 +1,7 @@
-@use "../../styles/mixins.scss" as *;
-
-// .google__button {
-// 	@include buttonDefault;
-// 	@include buttonDark;
-// }
+#login-page {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 1rem;
+}
