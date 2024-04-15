@@ -1,23 +1,13 @@
 import { Outlet } from "react-router-dom";
-
-import { Header } from "../components/header/HeaderContainer/HeaderContainer.tsx";
-// import { Home } from "../components/main/HomeContainer/HomeContainer.tsx";
-import { Footer } from "../components/footer/FooterContainer/FooterContainer.tsx";
+import { Footer } from "../components/footer/FooterContainer/FooterContainer";
+import { Header } from "../components/header/HeaderContainer/HeaderContainer";
 
 function Root() {
 	return (
-		<div>
-			<div id="wrapper">
-				<div id="wrapper__header">
-					<Header />
-				</div>
-				<div id="wrapper__main">
-					<Outlet />
-				</div>
-				<div id="wrapper__footer">
-					<Footer />
-				</div>
-			</div>
+		<div id="wrapper-root">
+			<Header />
+			<Outlet />
+			<Footer />
 		</div>
 	);
 }

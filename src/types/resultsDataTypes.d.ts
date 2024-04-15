@@ -11,7 +11,7 @@ type resultsItemType = {
 };
 
 type resultsContainerType = {
-	searchQuery: string[] | null;
-	data: TypeResultsItem[] | undefined;
+	// searchQuery: string[] | null;
+	// data: TypeResultsItem[] | undefined;
 	children: ReactNode;
 };

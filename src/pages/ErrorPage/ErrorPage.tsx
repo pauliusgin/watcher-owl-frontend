@@ -5,7 +5,7 @@ export function ErrorPage() {
 	console.error(error);
 
 	return (
-		<div className="page error-page">
+		<div className="page" id="error-page">
 			<h2>{`${error.status}: ${error.statusText}`}</h2>
 			<p>{`${error.data}`}</p>
 		</div>

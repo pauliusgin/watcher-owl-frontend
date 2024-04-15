@@ -1,11 +1,12 @@
 import { useContext, useState, SyntheticEvent } from "react";
+import { useNavigate } from "react-router-dom";
 import { DataContext } from "../../../context/DataContext";
 import "./SearchForm.scss";
 
 const SearchForm = () => {
 	const { setSearchQuery } = useContext(DataContext);
 	const [inputText, setInputText] = useState<string | null>("");
-	// todo redo inputRef into useState
+	const navigate = useNavigate();
 
 	function handleSearchQuery(event: SyntheticEvent) {
 		event.preventDefault();
@@ -22,6 +23,8 @@ const SearchForm = () => {
 
 		setSearchQuery(inputTextArray);
 		setInputText("");
+
+		navigate(`/results/search?${inputTextArray?.join("+")}`);
 	}
 
 	return (

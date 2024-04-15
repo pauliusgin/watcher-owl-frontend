@@ -14,7 +14,7 @@ const LogoutButton = () => {
 			onClick={() => {
 				setLoggedIn(false);
 			}}
-			className="login__button button"
+			className="logout__button button"
 			title="Login"
 		>
 			Atsijungti
