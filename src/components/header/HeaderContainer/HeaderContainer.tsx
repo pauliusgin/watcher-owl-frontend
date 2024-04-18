@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 // import { LogoutButton } from "../LogoutButton/LogoutButton.tsx";
 
 const Header = () => {
+	// const {tokens}
 	return (
 		<header className="header">
 			{/* <div className="header__placeholder">This is a header.</div> */}

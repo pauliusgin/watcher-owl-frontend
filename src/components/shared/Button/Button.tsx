@@ -5,7 +5,8 @@ type tButtonProps = {
 	onClick: MouseEventHandler;
 	children: ReactNode;
 	className: string;
-	title: string;
+	id?: string;
+	title?: string;
 };
 
 function Button({ onClick, children, className, title }: tButtonProps) {
