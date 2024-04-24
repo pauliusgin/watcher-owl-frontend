@@ -11,7 +11,6 @@ function LoginPage() {
 		<div className="page" id="login-page">
 			{(user?.isLoggedIn === false || !user) && <GoogleLoginButton />}
 			{user?.isLoggedIn === true && <LogoutButton />}
-			<p>(funkcionalumas ruošiamas)</p>
 		</div>
 	);
 }
