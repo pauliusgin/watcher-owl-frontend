@@ -1,19 +1,22 @@
 import { createContext, useState, ReactNode } from "react";
 // types
-import { userContextType } from "../types/contextTypes";
+import { userContextType, userType } from "../types/types";
 
 const UserContext = createContext<userContextType>({
-	loggedIn: false,
-	setLoggedIn: () => {},
+	user: undefined,
+	setUser: () => {},
+	userMenuVisibility: false,
+	setUserMenuVisibility: () => {},
 });
 
 function UserContextProvider({ children }: { children: ReactNode }) {
-	const [loggedIn, setLoggedIn] = useState<boolean>(false);
-
-	console.log("logged in:", loggedIn);
+	const [user, setUser] = useState<userType | undefined>(undefined);
+	const [userMenuVisibility, setUserMenuVisibility] = useState(false);
 
 	return (
-		<UserContext.Provider value={{ loggedIn, setLoggedIn }}>
+		<UserContext.Provider
+			value={{ user, setUser, userMenuVisibility, setUserMenuVisibility }}
+		>
 			{children}
 		</UserContext.Provider>
 	);

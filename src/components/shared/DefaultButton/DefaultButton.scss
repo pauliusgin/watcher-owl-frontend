@@ -1,6 +1,5 @@
 @use "../../../styles/mixins.scss" as *;
 
-.user__tasks_button {
+.button {
 	@include buttonDefault;
-	@include buttonDark;
 }

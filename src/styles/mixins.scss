@@ -46,3 +46,9 @@
 	background-color: $background;
 	color: $white;
 }
+
+@mixin flexCenter {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

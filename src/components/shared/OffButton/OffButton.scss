@@ -1,0 +1,28 @@
+@use "../../../styles/mixins.scss" as *;
+@use "../../../styles/variables.scss" as *;
+
+.off__button {
+	position: absolute;
+	right: 0rem;
+	top: 0.2rem;
+	width: 2rem;
+	height: 2rem;
+	background: $background;
+	border: none;
+	cursor: pointer;
+	@include flexCenter;
+	border-radius: 100%;
+
+	&:hover {
+		background-color: $background-active;
+	}
+
+	&_inside {
+		@include flexCenter;
+
+		&-x {
+			color: $white;
+			font-weight: 700;
+		}
+	}
+}

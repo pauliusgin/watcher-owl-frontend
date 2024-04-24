@@ -1,4 +1,4 @@
-import { resultsItemType } from "../types/resultsDataTypes";
+import { resultsItemType } from "../types/types";
 
 export const statusMap: { [status: string]: number } = {
 	"Nauja su etiketėmis": 0,

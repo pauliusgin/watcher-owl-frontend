@@ -1,24 +1,31 @@
-import { useContext } from "react";
-import { UserContext } from "../../../context/UserContext.tsx";
-// types
-import { userContextType } from "../../../types/contextTypes";
 import "./LogoutButton.scss";
-
-import { Button } from "../../shared/Button/Button.tsx";
+import { googleLogout } from "@react-oauth/google";
+import { DefaultButton } from "../../shared/DefaultButton/DefaultButton.tsx";
+import { useUser } from "../../../hooks/useUser.ts";
+import { userType } from "../../../types/types";
 
 const LogoutButton = () => {
-	const { setLoggedIn }: userContextType = useContext(UserContext);
+	const { setUser } = useUser();
+
+	function logOutUser() {
+		googleLogout();
+
+		setUser((prev) => {
+			return {
+				...prev,
+				isLoggedIn: false,
+			} as userType;
+		});
+	}
 
 	return (
-		<Button
-			onClick={() => {
-				setLoggedIn(false);
-			}}
+		<DefaultButton
+			onClick={() => logOutUser()}
 			className="logout__button button"
 			title="Login"
 		>
 			Atsijungti
-		</Button>
+		</DefaultButton>
 	);
 };
 

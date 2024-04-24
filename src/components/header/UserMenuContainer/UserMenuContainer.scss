@@ -1,0 +1,12 @@
+@use "../../../styles/variables.scss" as *;
+
+.user__menu {
+	&__container {
+		position: relative;
+		border: 1px solid rgba(0, 0, 0, 0);
+		background-color: $background;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+}

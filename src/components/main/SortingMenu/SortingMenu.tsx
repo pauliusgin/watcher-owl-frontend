@@ -9,8 +9,6 @@ function SortingMenu() {
 
 	function handleSortingItems(event: ChangeEvent<HTMLSelectElement>) {
 		const sortValue = event.target.value;
-		//* this comment is to be deleted
-		// console.log("Sorting by:", sortValue);
 
 		if (data) {
 			const sortedItems = sortingItems(data, sortValue);

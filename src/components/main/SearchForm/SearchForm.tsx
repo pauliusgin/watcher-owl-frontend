@@ -18,9 +18,6 @@ const SearchForm = () => {
 					.filter((word) => word.trim().length > 2)
 			: null;
 
-		// console.log("input:", inputText);
-		// console.log("search query set to:", inputTextArray);
-
 		setSearchQuery(inputTextArray);
 		setInputText("");
 

@@ -2,10 +2,7 @@ import "./ResultsItem.scss";
 import { useContext, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { DataContext } from "../../../context/DataContext";
-
-// types
-import { resultsItemType } from "../../../types/resultsDataTypes";
-import { dataContextType } from "../../../types/contextTypes";
+import { dataContextType, resultsItemType } from "../../../types/types";
 
 function ResultsItem() {
 	const { data, sessionData, setSessionData }: dataContextType =

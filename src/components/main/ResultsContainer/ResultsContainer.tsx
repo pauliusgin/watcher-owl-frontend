@@ -4,8 +4,7 @@ import { Outlet, useLocation } from "react-router-dom";
 import { SortingMenu } from "../SortingMenu/SortingMenu";
 import { LoadingAnimation } from "../../shared/LoadingAnimation/LoadingAnimation";
 import { DataContext } from "../../../context/DataContext";
-// types
-import { dataContextType } from "../../../types/contextTypes";
+import { dataContextType } from "../../../types/types";
 
 function ResultsContainer() {
 	const { searchQuery, data, sessionData, isLoading }: dataContextType =

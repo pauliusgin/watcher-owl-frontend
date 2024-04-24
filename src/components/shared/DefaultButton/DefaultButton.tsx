@@ -1,15 +1,20 @@
 import { ReactNode, MouseEventHandler } from "react";
-import "./Button.scss";
+import "./DefaultButton.scss";
 
-type tButtonProps = {
+type defaultButtonType = {
 	onClick: MouseEventHandler;
-	children: ReactNode;
+	children?: ReactNode;
 	className: string;
 	id?: string;
 	title?: string;
 };
 
-function Button({ onClick, children, className, title }: tButtonProps) {
+function DefaultButton({
+	onClick,
+	children,
+	className,
+	title,
+}: defaultButtonType) {
 	return (
 		<button onClick={onClick} className={className} title={title}>
 			{children}
@@ -17,4 +22,4 @@ function Button({ onClick, children, className, title }: tButtonProps) {
 	);
 }
 
-export { Button };
+export { DefaultButton };

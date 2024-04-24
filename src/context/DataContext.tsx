@@ -1,8 +1,7 @@
 import { createContext, useState, useEffect, ReactNode } from "react";
 import { contactProxy } from "../services/contactProxy.ts";
 // types
-import { dataContextType } from "../types/contextTypes";
-import { resultsItemType } from "../types/resultsDataTypes";
+import { dataContextType, resultsItemType } from "../types/types";
 
 const DataContext = createContext<dataContextType>({
 	data: undefined,
@@ -51,10 +50,6 @@ function DataContextProvider({ children }: { children: ReactNode }) {
 		);
 		setData(dataOnPageReload);
 	}, []);
-
-	//* this comment is to be deleted
-	// console.log("fetched data:", data);
-	// console.log("session data:", sessionData);
 
 	return (
 		<DataContext.Provider

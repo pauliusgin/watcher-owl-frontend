@@ -1,0 +1,15 @@
+@use "../../../styles/variables.scss" as *;
+@use "../../../styles/mixins.scss" as *;
+
+.user__menu__button {
+	width: 3rem;
+	height: 3rem;
+	background-color: $background;
+	@include flexCenter;
+
+	&-picture {
+		width: 2rem;
+		height: 2rem;
+		border-radius: 100%;
+	}
+}
