@@ -8,6 +8,7 @@ import { ErrorPage } from "./pages/ErrorPage/ErrorPage.tsx";
 import { LoginPage } from "./pages/LoginPage/LoginPage.tsx";
 import { HomePage } from "./pages/HomePage/HomePage.tsx";
 import { TasksPage } from "./pages/TasksPage/TasksPage.tsx";
+import { SettingsPage } from "./pages/SettingsPage/SettingsPage.tsx";
 import { ResultsContainer } from "./components/main/ResultsContainer/ResultsContainer.tsx";
 import { ResultsItem } from "./components/main/ResultsItem/ResultsItem.tsx";
 
@@ -20,7 +21,8 @@ const router = createBrowserRouter(
 				</Route>
 			</Route>
 			<Route path="/login" element={<LoginPage />} />
-			<Route path="/tasks" element={<TasksPage />} />
+			<Route path="user/tasks" element={<TasksPage />} />
+			<Route path="user/settings" element={<SettingsPage />} />
 		</Route>
 	)
 );

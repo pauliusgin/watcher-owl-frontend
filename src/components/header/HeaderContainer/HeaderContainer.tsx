@@ -18,9 +18,16 @@ const Header = () => {
 							<NavLink to="/login">Prisijungti</NavLink>
 						)}
 					</li>
-					<li className="header__nav__list-item">
-						{user?.isLoggedIn && <UserMenuContainer />}
-					</li>
+					{user?.isLoggedIn && (
+						<li className="header__nav__list-item">
+							<NavLink to="/user/tasks">Užduotys</NavLink>
+						</li>
+					)}
+					{user?.isLoggedIn && (
+						<li className="header__nav__list-item">
+							<UserMenuContainer />
+						</li>
+					)}
 				</ul>
 			</nav>
 		</header>

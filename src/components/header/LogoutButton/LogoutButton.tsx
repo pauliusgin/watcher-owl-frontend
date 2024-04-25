@@ -22,7 +22,6 @@ const LogoutButton = () => {
 		<DefaultButton
 			onClick={() => logOutUser()}
 			className="logout__button button"
-			title="Login"
 		>
 			Atsijungti
 		</DefaultButton>
