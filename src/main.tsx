@@ -9,7 +9,7 @@ import "./index.scss";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
 	<React.StrictMode>
-		<GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>
+		<GoogleOAuthProvider clientId="1043569609351-a4vs2ihce1ch6kruhro3fkueaguecelc.apps.googleusercontent.com">
 			<UserContextProvider>
 				<DataContextProvider>
 					<RouterProvider router={router} />
