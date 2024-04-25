@@ -46,7 +46,7 @@ function DataContextProvider({ children }: { children: ReactNode }) {
 
 	useEffect(() => {
 		const dataOnPageReload = JSON.parse(
-			sessionStorage.getItem(`${location.search.slice(1)}`) as string
+			sessionStorage.getItem(`${location.search.slice(3)}`) as string
 		);
 		setData(dataOnPageReload);
 	}, []);

@@ -13,7 +13,7 @@ const SearchForm = () => {
 
 		const inputTextArray: string[] | null = inputText
 			? inputText
-					.replaceAll(/\W/g, " ")
+					.replaceAll(/[^a-zA-Z0-9ąĄčČęĘėĖįĮšŠųŲūŪžŽ]/g, " ")
 					.split(" ")
 					.filter((word) => word.trim().length > 2)
 			: null;
@@ -23,7 +23,7 @@ const SearchForm = () => {
 
 		const sessionName = inputTextArray?.join("+");
 
-		navigate(`/results/search?${sessionName}`, {
+		navigate(`/results/search?q=${sessionName}`, {
 			state: { sessionName },
 		});
 	}
