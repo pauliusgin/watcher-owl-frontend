@@ -12,8 +12,9 @@ function ResultsItem() {
 
 	useEffect(() => {
 		if (location.state.sessionName) {
+			const sessionNameDecoded = decodeURIComponent(location.state.sessionName);
 			setSessionData(
-				JSON.parse(sessionStorage.getItem(location.state.sessionName) as string)
+				JSON.parse(sessionStorage.getItem(sessionNameDecoded) as string)
 			);
 		}
 	}, [location.state.sessionName, setSessionData]);

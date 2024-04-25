@@ -11,6 +11,7 @@ function ResultsContainer() {
 		useContext(DataContext);
 
 	const location = useLocation();
+	const sessionNameDecoded = decodeURIComponent(location.state.sessionName);
 
 	if (searchQuery?.length === 0) {
 		return <p>{`Užklausą turi sudaryti bent trys raidės`}</p>;
@@ -45,7 +46,7 @@ function ResultsContainer() {
 					}) užklausai:`}
 					<br />
 					<span className="main__results_query-span">
-						{location.state.sessionName.replaceAll("+", ", ")}
+						{sessionNameDecoded.replaceAll("+", ", ")}
 					</span>
 				</p>
 				<Outlet />

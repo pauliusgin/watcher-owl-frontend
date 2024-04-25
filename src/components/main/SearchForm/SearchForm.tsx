@@ -1,7 +1,7 @@
+import "./SearchForm.scss";
 import { useContext, useState, SyntheticEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { DataContext } from "../../../context/DataContext";
-import "./SearchForm.scss";
 
 const SearchForm = () => {
 	const { setSearchQuery } = useContext(DataContext);
@@ -24,7 +24,7 @@ const SearchForm = () => {
 		const sessionName = inputTextArray?.join("+");
 
 		navigate(`/results/search?q=${sessionName}`, {
-			state: { sessionName },
+			state: { sessionName: sessionName },
 		});
 	}
 

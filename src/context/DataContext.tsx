@@ -32,10 +32,8 @@ function DataContextProvider({ children }: { children: ReactNode }) {
 				setData(results);
 
 				if (results) {
-					sessionStorage.setItem(
-						`${searchQuery.toString().replaceAll(",", "+")}`,
-						JSON.stringify(results)
-					);
+					const sessionName = searchQuery.toString().replaceAll(",", "+");
+					sessionStorage.setItem(`${sessionName}`, JSON.stringify(results));
 				}
 
 				setIsLoading(false);
@@ -45,8 +43,10 @@ function DataContextProvider({ children }: { children: ReactNode }) {
 	}, [searchQuery]);
 
 	useEffect(() => {
+		const sessionNameDecoded = decodeURIComponent(location.search.slice(3));
+
 		const dataOnPageReload = JSON.parse(
-			sessionStorage.getItem(`${location.search.slice(3)}`) as string
+			sessionStorage.getItem(`${sessionNameDecoded}`) as string
 		);
 		setData(dataOnPageReload);
 	}, []);
