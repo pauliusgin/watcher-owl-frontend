@@ -11,6 +11,7 @@ import { TasksPage } from "./pages/TasksPage/TasksPage.tsx";
 import { SettingsPage } from "./pages/SettingsPage/SettingsPage.tsx";
 import { ResultsContainer } from "./components/main/ResultsContainer/ResultsContainer.tsx";
 import { ResultsItem } from "./components/main/ResultsItem/ResultsItem.tsx";
+import { ProtectedRoute } from "./routes/ProtectedRoute.tsx";
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
@@ -21,8 +22,10 @@ const router = createBrowserRouter(
 				</Route>
 			</Route>
 			<Route path="/login" element={<LoginPage />} />
-			<Route path="user/tasks" element={<TasksPage />} />
-			<Route path="user/settings" element={<SettingsPage />} />
+			<Route element={<ProtectedRoute />}>
+				<Route path="user/tasks" element={<TasksPage />} />
+				<Route path="user/settings" element={<SettingsPage />} />
+			</Route>
 		</Route>
 	)
 );
