@@ -22,6 +22,7 @@ type resultsItemType = {
 	id?: number;
 	title: string;
 	photo: string;
+	timestamp: number;
 	price: number;
 	currency?: string;
 	status: string;

@@ -35,6 +35,13 @@ function ResultsItem() {
 									{`Kaina: ${item?.price} ${item?.currency}`}
 								</p>
 								<p className="main__results_item-status">{`Būklė: ${item?.status}`}</p>
+								<p className="main__results_item-status">{`Įkelta: ${`Įkelta: ${new Date(
+									item?.timestamp * 1000
+								).toLocaleDateString("lt-LT", {
+									year: "numeric",
+									month: "long",
+									day: "2-digit",
+								})}`}`}</p>
 								<p className="main__results_item-url">
 									Peržiūrėti skelbimą
 									<a href={item?.url} target="_blank">
@@ -58,6 +65,15 @@ function ResultsItem() {
 									{`Kaina: ${item?.price} ${item?.currency}`}
 								</p>
 								<p className="main__results_item-status">{`Būklė: ${item?.status}`}</p>
+								<p className="main__results_item-status">
+									{`Įkelta: ${new Date(
+										item?.timestamp * 1000
+									).toLocaleDateString("lt-LT", {
+										year: "numeric",
+										month: "long",
+										day: "2-digit",
+									})}`}
+								</p>
 								<p className="main__results_item-url">
 									Peržiūrėti skelbimą
 									<a href={item?.url} target="_blank">

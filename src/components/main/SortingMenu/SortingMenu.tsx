@@ -24,19 +24,18 @@ function SortingMenu() {
 	return (
 		<>
 			<label className="main__results_sort-label" htmlFor="sorting">
-				{`Rikiuoti pagal `}
+				{`Rikiuojama pagal `}
 				<select
 					className="main__results_sort"
 					name="sorting"
 					id="sorting"
 					onChange={handleSortingItems}
 				>
-					<option
-						className="main__result_sort-option--default"
-						value="default"
-						hidden
-					>
-						-- pasirinkite --
+					<option className="main__result_sort-option" value="newest">
+						datą (naujausi pirma)
+					</option>
+					<option className="main__result_sort-option" value="oldest">
+						datą (seniausi pirma)
 					</option>
 					<option className="main__result_sort-option" value="titleA-Z">
 						pavadinimą (a-z)

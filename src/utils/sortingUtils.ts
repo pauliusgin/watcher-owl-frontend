@@ -12,6 +12,12 @@ export function sortingItems(array: resultsItemType[], sortingMethod: string) {
 	let sortedItems;
 
 	switch (sortingMethod) {
+		case "newest":
+			sortedItems = array.toSorted((a, b) => b.timestamp - a.timestamp);
+			break;
+		case "oldest":
+			sortedItems = array.toSorted((a, b) => a.timestamp - b.timestamp);
+			break;
 		case "priceFromLowest":
 			sortedItems = array.toSorted((a, b) => a.price - b.price);
 			break;
