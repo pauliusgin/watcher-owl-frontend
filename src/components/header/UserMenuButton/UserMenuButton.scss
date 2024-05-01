@@ -5,7 +5,9 @@
 	width: 3rem;
 	height: 3rem;
 	background-color: $background;
+	border-radius: 100%;
 	@include flexCenter;
+	@include tabFocusOutline;
 
 	&-picture {
 		width: 2rem;

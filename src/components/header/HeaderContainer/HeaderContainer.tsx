@@ -11,16 +11,22 @@ const Header = () => {
 			<nav className="header__nav" role="navigation">
 				<ul className="header__nav__list">
 					<li className="header__nav__list-item">
-						<NavLink to="/">Pagrindinis</NavLink>
+						<NavLink className="header__nav__link" to="/">
+							Pagrindinis
+						</NavLink>
 					</li>
 					<li className="header__nav__list-item">
 						{(!user || user.isLoggedIn === false) && (
-							<NavLink to="/login">Prisijungti</NavLink>
+							<NavLink className="header__nav__link" to="/login">
+								Prisijungti
+							</NavLink>
 						)}
 					</li>
 					{user?.isLoggedIn && (
 						<li className="header__nav__list-item">
-							<NavLink to="/user/tasks">Užduotys</NavLink>
+							<NavLink className="header__nav__link" to="/user/tasks">
+								Užduotys
+							</NavLink>
 						</li>
 					)}
 					{user?.isLoggedIn && (

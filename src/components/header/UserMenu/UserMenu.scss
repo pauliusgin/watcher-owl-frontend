@@ -1,4 +1,5 @@
 @use "../../../styles/variables.scss" as *;
+@use "../../../styles/mixins.scss" as *;
 
 .user__menu {
 	z-index: 3;
@@ -38,9 +39,12 @@
 		&:hover {
 			color: $yellow-300;
 		}
-		&-settings span {
-			color: $foreground-inactive;
-			font-size: 0.75rem;
+		&-settings {
+			@include tabFocusOutline;
+			span {
+				color: $foreground-inactive;
+				font-size: 0.75rem;
+			}
 		}
 	}
 }

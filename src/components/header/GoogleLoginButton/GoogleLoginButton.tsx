@@ -28,7 +28,7 @@ function GoogleLoginButton() {
 					const decodedCredentials = jwtDecode(
 						credentialResponse.credential
 					) as JwtPayload;
-					const { iss, email_verified, given_name, email, sub, picture } =
+					const { iss, email_verified, given_name, email, picture } =
 						decodedCredentials;
 					if (
 						iss === "https://accounts.google.com" &&
@@ -37,9 +37,9 @@ function GoogleLoginButton() {
 						setUser({
 							given_name,
 							email,
-							Google_ID: sub,
 							picture,
 							isLoggedIn: true,
+							sessionExpirationDate: Date.now() + 1000 * 60 * 60 * 24,
 						});
 					}
 				}

@@ -29,6 +29,9 @@
 		& .search__form_separator line {
 			stroke: $foreground-active;
 		}
+		& .search__form_off-button {
+			background-color: $background-active;
+		}
 	}
 
 	&_icon-container {
@@ -39,6 +42,7 @@
 		height: 1.5rem;
 		fill: $foreground-inactive;
 	}
+
 	&_input {
 		height: 1.5rem;
 		flex-grow: 1;
@@ -50,19 +54,32 @@
 			outline: none;
 		}
 	}
+
+	&_off-button {
+		@include buttonDefault;
+		@include buttonDark;
+		@include offButton;
+		@include tabFocusOutline;
+	}
+
 	&_separator-container {
 		width: 1rem;
 		padding: 0.4rem;
 	}
+
 	&_separator line {
 		stroke: $foreground-inactive;
 	}
 
-	&_button {
-		@include buttonDefault;
+	&_button,
+	#form-submit-button {
 		width: 4rem;
 		height: 1.5rem;
 		color: $foreground-inactive;
 		background-color: $background;
+	}
+	& #search-form-submit-button {
+		@include buttonDefault;
+		@include tabFocusOutline;
 	}
 }

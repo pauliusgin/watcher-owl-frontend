@@ -1,0 +1,21 @@
+@use "../../../styles/mixins.scss" as *;
+@use "../../../styles/variables.scss" as *;
+
+.user__menu_off {
+	position: absolute;
+	right: 0rem;
+	top: 0.2rem;
+	width: 2rem;
+	height: 2rem;
+	background: $background;
+	color: $white;
+	border: none;
+	cursor: pointer;
+	border-radius: 100%;
+	@include flexCenter;
+	@include tabFocusOutline;
+
+	&:hover {
+		background-color: $background-active;
+	}
+}

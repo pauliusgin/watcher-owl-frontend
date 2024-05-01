@@ -26,7 +26,6 @@
 	}
 }
 
-// button template
 @mixin buttonDefault {
 	border: none;
 	outline: none;
@@ -34,7 +33,6 @@
 	cursor: pointer;
 
 	&:hover {
-		text-decoration: underline;
 		color: $yellow-300;
 	}
 	&:active {
@@ -47,8 +45,20 @@
 	color: $white;
 }
 
+@mixin offButton {
+	width: 2rem;
+	height: 2rem;
+	border-radius: 100%;
+}
+
 @mixin flexCenter {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+@mixin tabFocusOutline {
+	&:focus-visible {
+		outline: 1px solid $white;
+	}
 }

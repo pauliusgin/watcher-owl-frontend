@@ -1,4 +1,4 @@
-import { ReactNode, Dispatch, SetStateAction } from "react";
+import { ReactNode, Dispatch, SetStateAction, MouseEventHandler } from "react";
 
 type dataContextType = {
 	data: resultsItemType[] | undefined;
@@ -44,11 +44,20 @@ type sortingMethodType =
 type userType = {
 	given_name: string;
 	email: string;
-	Google_ID: string;
 	picture: string;
 	isLoggedIn: boolean;
+	sessionExpirationDate: number;
 };
 
 type userMenuVisibilityType = {
 	toggleUserMenuVisibility: () => void;
+};
+
+type defaultButtonType = {
+	onClick: MouseEventHandler;
+	children?: ReactNode;
+	className?: string;
+	id?: string;
+	title?: string;
+	type?: "submit" | "reset" | "button" | undefined;
 };

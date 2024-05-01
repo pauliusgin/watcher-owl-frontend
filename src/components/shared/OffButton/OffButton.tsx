@@ -1,19 +1,12 @@
-import "./OffButton.scss";
-import { useUser } from "../../../hooks/useUser";
+// import "./OffButton.scss";
+import { DefaultButton } from "../DefaultButton/DefaultButton";
+import { defaultButtonType } from "../../../types/types";
 
-function OffButton() {
-	const { setUserMenuVisibility } = useUser();
-
-	function turnVisibilityOff() {
-		setUserMenuVisibility(false);
-	}
-
+function OffButton({ onClick, className, ...props }: defaultButtonType) {
 	return (
-		<button onClick={turnVisibilityOff} className="off__button">
-			<div className="off__button_inside">
-				<p className="off__button_inside-x">X</p>
-			</div>
-		</button>
+		<DefaultButton onClick={onClick} className={className} {...props}>
+			X
+		</DefaultButton>
 	);
 }
 

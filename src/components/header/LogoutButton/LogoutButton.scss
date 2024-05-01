@@ -3,4 +3,5 @@
 .logout__button {
 	@include buttonDefault;
 	@include buttonDark;
+	@include tabFocusOutline;
 }
