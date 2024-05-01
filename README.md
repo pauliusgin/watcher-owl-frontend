@@ -2,10 +2,12 @@
 
 #### TODO:
 
-- keep user logged in during page refresh
 - tasks page
+  - favorite tasks
   - manage tasks
   - tasks history
 - favorite items
-- filtering by price range
+- filtering by price range (?)
 - user's manual
+- /privacy-policy
+- /terms-of-service

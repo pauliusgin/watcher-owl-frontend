@@ -13,10 +13,6 @@ function ResultsContainer() {
 	const location = useLocation();
 	const sessionNameDecoded = decodeURIComponent(location.state.sessionName);
 
-	if (searchQuery?.length === 0) {
-		return <p>{`Užklausą turi sudaryti bent trys raidės`}</p>;
-	}
-
 	if (isLoading) {
 		return <LoadingAnimation />;
 	}

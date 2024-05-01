@@ -1,7 +1,7 @@
 import { config } from "../../cfg/config";
 import { userType } from "../types/types";
 
-async function addNewUser(user: userType) {
+async function lookForUserInDatabase(user: userType) {
 	try {
 		const response = await fetch(`${config.backend.server}/api/users`, {
 			method: "POST",
@@ -22,4 +22,4 @@ async function addNewUser(user: userType) {
 	}
 }
 
-export { addNewUser };
+export { lookForUserInDatabase };

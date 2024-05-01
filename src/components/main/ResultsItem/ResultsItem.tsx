@@ -25,12 +25,18 @@ function ResultsItem() {
 				? data?.map((item: resultsItemType) => (
 						<div key={item?.id} className="main__results_item">
 							<div className="main__results_item-image">
-								<a href={item?.url} target="_blank">
+								<a href={item?.full_size_url} target="_blank">
 									<img src={item?.photo} alt="pirma-foto" loading="lazy" />
 								</a>
 							</div>
 							<div className="main__results_item-description">
-								<p className="main__results_item-title">{`Pavadinimas: ${item?.title}`}</p>
+								<a
+									className="main__results_item-title-link"
+									href={item?.url}
+									target="_blank"
+								>
+									<h4 className="main__results_item-title">{`Pavadinimas: ${item?.title}`}</h4>
+								</a>
 								<p className="main__results_item-price">
 									{`Kaina: ${item?.price} ${item?.currency}`}
 								</p>
@@ -42,25 +48,24 @@ function ResultsItem() {
 									month: "long",
 									day: "2-digit",
 								})}`}`}</p>
-								<p className="main__results_item-url">
-									Peržiūrėti skelbimą
-									<a href={item?.url} target="_blank">
-										{` vinted.lt `}
-									</a>
-									puslapyje.
-								</p>
 							</div>
 						</div>
 					))
 				: sessionData?.map((item: resultsItemType) => (
 						<div key={item?.id} className="main__results_item">
 							<div className="main__results_item-image">
-								<a href={item?.url} target="_blank">
+								<a
+									className="main__results_item-title-link"
+									href={item?.full_size_url}
+									target="_blank"
+								>
 									<img src={item?.photo} alt="pirma-foto" loading="lazy" />
 								</a>
 							</div>
 							<div className="main__results_item-description">
-								<p className="main__results_item-title">{`Pavadinimas: ${item?.title}`}</p>
+								<a href={item?.url} target="_blank">
+									<h4 className="main__results_item-title">{`Pavadinimas: ${item?.title}`}</h4>
+								</a>
 								<p className="main__results_item-price">
 									{`Kaina: ${item?.price} ${item?.currency}`}
 								</p>
@@ -73,13 +78,6 @@ function ResultsItem() {
 										month: "long",
 										day: "2-digit",
 									})}`}
-								</p>
-								<p className="main__results_item-url">
-									Peržiūrėti skelbimą
-									<a href={item?.url} target="_blank">
-										{` vinted.lt `}
-									</a>
-									puslapyje.
 								</p>
 							</div>
 						</div>

@@ -1,4 +1,5 @@
 @use "../../../styles/variables.scss" as *;
+@use "../../../styles/mixins.scss" as *;
 
 .main__results_sort {
 	background: $background;
@@ -10,4 +11,5 @@
 	&:focus {
 		outline: none;
 	}
+	@include tabFocusOutline;
 }

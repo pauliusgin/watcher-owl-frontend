@@ -1,7 +1,7 @@
 import "./Title.scss";
 
 function Title() {
-	return <div className="main__title">The Watcher Owl</div>;
+	return <div className="main__title">Pastabioji Pelėda</div>;
 }
 
 export { Title };

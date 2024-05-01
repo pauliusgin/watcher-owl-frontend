@@ -22,6 +22,7 @@ type resultsItemType = {
 	id?: number;
 	title: string;
 	photo: string;
+	full_size_url: string;
 	timestamp: number;
 	price: number;
 	currency?: string;

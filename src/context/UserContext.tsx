@@ -1,6 +1,7 @@
 import { createContext, useState, ReactNode, useEffect } from "react";
 import { userContextType, userType } from "../types/types";
-// import { addNewUser } from "../services/addNewUser.service";
+import { expiresAfterThisManyHours } from "../utils/setExpirationDate";
+// import { lookForUserInDatabase } from "../services/addNewUser.service";
 
 const UserContext = createContext<userContextType>({
 	user: undefined,
@@ -18,9 +19,9 @@ function UserContextProvider({ children }: { children: ReactNode }) {
 			if (user) {
 				sessionStorage.setItem(`userSession`, JSON.stringify(user));
 				// todo logic with database
-				// const result = await addNewUser(user);
-				// if (result) {
-				// 	console.log("useEffect here", result);
+				// const userExistsInDatabase = await lookForUserInDatabase(user);
+				// if (userExistsInDatabase) {
+				// 	console.log("existing user");
 				// }
 			}
 		}
@@ -28,20 +29,20 @@ function UserContextProvider({ children }: { children: ReactNode }) {
 	}, [user]);
 
 	useEffect(() => {
-		const userOnPageReload = JSON.parse(
+		const userInSessionStorage = JSON.parse(
 			sessionStorage.getItem(`userSession`) as string
 		);
 		if (
-			userOnPageReload?.isLoggedIn &&
-			userOnPageReload?.sessionExpirationDate > Date.now()
+			userInSessionStorage?.isLoggedIn &&
+			userInSessionStorage?.sessionExpirationDate > Date.now()
 		) {
-			const { given_name, email, picture, isLoggedIn } = userOnPageReload;
+			const { given_name, email, picture, isLoggedIn } = userInSessionStorage;
 			setUser({
 				given_name,
 				email,
 				picture,
 				isLoggedIn,
-				sessionExpirationDate: Date.now() + 1000 * 60 * 60 * 24,
+				sessionExpirationDate: expiresAfterThisManyHours(24),
 			});
 		}
 	}, []);

@@ -5,6 +5,7 @@ import { UserContext } from "../../../context/UserContext";
 import { GoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
 import { userContextType } from "../../../types/types";
+import { expiresAfterThisManyHours } from "../../../utils/setExpirationDate";
 
 function GoogleLoginButton() {
 	const { setUser }: userContextType = useContext(UserContext);
@@ -39,7 +40,7 @@ function GoogleLoginButton() {
 							email,
 							picture,
 							isLoggedIn: true,
-							sessionExpirationDate: Date.now() + 1000 * 60 * 60 * 24,
+							sessionExpirationDate: expiresAfterThisManyHours(24),
 						});
 					}
 				}
