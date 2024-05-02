@@ -1,7 +1,7 @@
 import { createContext, useState, ReactNode, useEffect } from "react";
 import { userContextType, userType } from "../types/types";
 import { expiresAfterThisManyHours } from "../utils/setExpirationDate";
-// import { lookForUserInDatabase } from "../services/addNewUser.service";
+import { addUserToDatabase } from "../services/userAdd.service";
 
 const UserContext = createContext<userContextType>({
 	user: undefined,
@@ -15,17 +15,11 @@ function UserContextProvider({ children }: { children: ReactNode }) {
 	const [userMenuVisibility, setUserMenuVisibility] = useState(false);
 
 	useEffect(() => {
-		async function newUser() {
-			if (user) {
-				sessionStorage.setItem(`userSession`, JSON.stringify(user));
-				// todo logic with database
-				// const userExistsInDatabase = await lookForUserInDatabase(user);
-				// if (userExistsInDatabase) {
-				// 	console.log("existing user");
-				// }
-			}
+		if (user) {
+			sessionStorage.setItem(`userSession`, JSON.stringify(user));
+
+			addUserToDatabase(user);
 		}
-		newUser();
 	}, [user]);
 
 	useEffect(() => {

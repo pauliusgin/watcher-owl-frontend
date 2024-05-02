@@ -1,7 +1,7 @@
 import { config } from "../../cfg/config";
 import { userType } from "../types/types";
 
-async function lookForUserInDatabase(user: userType) {
+async function addUserToDatabase(user: userType) {
 	try {
 		const response = await fetch(`${config.backend.server}/api/users`, {
 			method: "POST",
@@ -13,13 +13,13 @@ async function lookForUserInDatabase(user: userType) {
 
 		if (!response.ok) throw new Error("Could not contact /api/users");
 
-		const data = await response.json();
+		const userStatusInTheDatabase = await response.json();
 
-		return data;
+		return userStatusInTheDatabase;
 	} catch (error) {
 		if (error instanceof Error)
-			console.log("failed to send request to api/users", error.message);
+			console.log("Failed to send request to api/users", error.message);
 	}
 }
 
-export { lookForUserInDatabase };
+export { addUserToDatabase };

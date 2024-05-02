@@ -1,6 +1,5 @@
 import { createContext, useState, useEffect, ReactNode } from "react";
 import { contactProxy } from "../services/contactProxy.service.ts";
-// types
 import { dataContextType, resultsItemType } from "../types/types";
 
 const DataContext = createContext<dataContextType>({
