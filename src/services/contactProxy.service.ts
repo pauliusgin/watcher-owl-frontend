@@ -1,4 +1,4 @@
-import { config } from "../../cfg/config";
+import { config } from "../../configs/config";
 
 async function contactProxy(searchQuery: string[]) {
 	try {

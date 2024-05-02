@@ -17,8 +17,8 @@ function UserMenu() {
 			<div className="user__menu_links">
 				<NavLink to="user/settings" className="user__menu_links-settings">
 					Nustatymai
-					<br />
-					<span>(funkcionalumas ruošiamas)</span>
+					{/* <br />
+					<span>(funkcionalumas ruošiamas)</span> */}
 				</NavLink>
 			</div>
 			<LogoutButton />

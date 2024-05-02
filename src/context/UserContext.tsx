@@ -1,7 +1,7 @@
 import { createContext, useState, ReactNode, useEffect } from "react";
 import { userContextType, userType } from "../types/types";
 import { expiresAfterThisManyHours } from "../utils/setExpirationDate";
-import { addUserToDatabase } from "../services/userAdd.service";
+import { addUserToDatabase } from "../services/user.services";
 
 const UserContext = createContext<userContextType>({
 	user: undefined,
