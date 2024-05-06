@@ -1,14 +1,11 @@
 import "./ResultsContainer.scss";
-import { useContext } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { SortingMenu } from "../SortingMenu/SortingMenu";
 import { LoadingAnimation } from "../../shared/LoadingAnimation/LoadingAnimation";
-import { DataContext } from "../../../context/DataContext";
-import { dataContextType } from "../../../types/types";
+import { useData } from "../../../hooks/custom.hooks";
 
 function ResultsContainer() {
-	const { searchQuery, data, sessionData, isLoading }: dataContextType =
-		useContext(DataContext);
+	const { searchQuery, data, sessionData, isLoading } = useData();
 
 	const location = useLocation();
 	const sessionNameDecoded = decodeURIComponent(location.state.sessionName);

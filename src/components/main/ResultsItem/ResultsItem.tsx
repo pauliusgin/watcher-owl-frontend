@@ -1,12 +1,11 @@
 import "./ResultsItem.scss";
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { DataContext } from "../../../context/DataContext";
-import { dataContextType, resultsItemType } from "../../../types/types";
+import { resultsItemType } from "../../../types/types";
+import { useData } from "../../../hooks/custom.hooks";
 
 function ResultsItem() {
-	const { data, sessionData, setSessionData }: dataContextType =
-		useContext(DataContext);
+	const { data, sessionData, setSessionData } = useData();
 
 	const location = useLocation();
 

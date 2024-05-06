@@ -1,6 +1,6 @@
 import "./LoginPage.scss";
 import { GoogleLoginButton } from "../../components/header/GoogleLoginButton/GoogleLoginButton";
-import { useUser } from "../../hooks/useUser";
+import { useUser } from "../../hooks/custom.hooks";
 
 function LoginPage() {
 	const { user } = useUser();

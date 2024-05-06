@@ -1,6 +1,6 @@
 import "./UserMenuButton.scss";
 import { DefaultButton } from "../../shared/DefaultButton/DefaultButton";
-import { useUser } from "../../../hooks/useUser";
+import { useUser } from "../../../hooks/custom.hooks";
 import { userMenuVisibilityType } from "../../../types/types";
 
 function UserMenuButton({ toggleUserMenuVisibility }: userMenuVisibilityType) {

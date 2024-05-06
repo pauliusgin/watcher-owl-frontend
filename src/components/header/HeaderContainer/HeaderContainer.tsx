@@ -1,7 +1,7 @@
 import "./HeaderContainer.scss";
 import { NavLink } from "react-router-dom";
 import { UserMenuContainer } from "../UserMenuContainer/UserMenuContainer";
-import { useUser } from "../../../hooks/useUser";
+import { useUser } from "../../../hooks/custom.hooks";
 
 const Header = () => {
 	const { user } = useUser();

@@ -2,7 +2,7 @@ import "./UserMenu.scss";
 import { NavLink } from "react-router-dom";
 import { LogoutButton } from "../LogoutButton/LogoutButton";
 import { UserMenuOffButton } from "../UserMenuOffButton/UserMenuOffButton";
-import { useUser } from "../../../hooks/useUser";
+import { useUser } from "../../../hooks/custom.hooks";
 
 function UserMenu() {
 	const { user } = useUser();
