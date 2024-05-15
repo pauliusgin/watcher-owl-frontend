@@ -43,9 +43,10 @@ type sortingMethodType =
 	| "statusFromWorst";
 
 type userType = {
-	given_name: string;
+	given_name?: string;
 	email: string;
-	picture: string;
+	password?: string;
+	picture?: string;
 	isLoggedIn: boolean;
 	sessionExpirationDate: number;
 };

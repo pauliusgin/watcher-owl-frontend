@@ -20,8 +20,8 @@ function ResultsItem() {
 
 	return (
 		<div id="results-items-container">
-			{data === sessionData
-				? data?.map((item: resultsItemType) => (
+			{location.search
+				? sessionData?.map((item: resultsItemType) => (
 						<div key={item?.id} className="main__results_item">
 							<div className="main__results_item-image">
 								<a href={item?.full_size_url} target="_blank">
@@ -50,7 +50,7 @@ function ResultsItem() {
 							</div>
 						</div>
 					))
-				: sessionData?.map((item: resultsItemType) => (
+				: data?.map((item: resultsItemType) => (
 						<div key={item?.id} className="main__results_item">
 							<div className="main__results_item-image">
 								<a

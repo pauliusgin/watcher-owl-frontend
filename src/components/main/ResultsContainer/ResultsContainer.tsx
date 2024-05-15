@@ -34,7 +34,7 @@ function ResultsContainer() {
 					<SortingMenu />
 				</div>
 				<p className="main__results_item-query">
-					{`Rodomi rezultatai (${
+					{`Rodomi naujausi rezultatai (${
 						data === sessionData ? data.length : sessionData?.length
 					}) užklausai:`}
 					<br />
