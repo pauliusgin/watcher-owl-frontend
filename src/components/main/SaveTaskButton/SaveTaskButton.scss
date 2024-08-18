@@ -1,0 +1,11 @@
+@use "../../../styles/mixins.scss" as *;
+@use "../../../styles//variables.scss" as *;
+
+.main__results_save-search__button {
+    @include tabFocusOutline;
+    @include buttonDefault;
+    @include buttonDark;
+
+    padding: 0.5rem;
+    border: 1px solid $yellow-300;
+}

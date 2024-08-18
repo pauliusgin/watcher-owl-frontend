@@ -1,13 +1,18 @@
 import { useContext } from "react";
 import { UserContext } from "../context/UserContext";
 import { DataContext } from "../context/DataContext";
+import { TaskContext } from "../context/TaskContext";
 
 function useUser() {
-	return useContext(UserContext);
+    return useContext(UserContext);
 }
 
 function useData() {
-	return useContext(DataContext);
+    return useContext(DataContext);
 }
 
-export { useData, useUser };
+function useTasks() {
+    return useContext(TaskContext);
+}
+
+export { useData, useUser, useTasks };

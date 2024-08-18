@@ -1,11 +1,12 @@
 import "./TasksPage.scss";
+import { TasksContainer } from "../../components/main/TasksContainer/TasksContainer";
 
 function TasksPage() {
-	return (
-		<div className="page" id="tasks-page">
-			Užduočių puslapis ruošiamas.
-		</div>
-	);
+    return (
+        <div className="page" id="tasks-page">
+            <TasksContainer />
+        </div>
+    );
 }
 
 export { TasksPage };
