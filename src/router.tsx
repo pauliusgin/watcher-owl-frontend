@@ -10,8 +10,8 @@ import { LoginPage } from "./pages/LoginPage/LoginPage.tsx";
 import { HomePage } from "./pages/HomePage/HomePage.tsx";
 import { TasksPage } from "./pages/TasksPage/TasksPage.tsx";
 import { SettingsPage } from "./pages/SettingsPage/SettingsPage.tsx";
-import { ResultsContainer } from "./components/main/ResultsContainer/ResultsContainer.tsx";
-import { ResultsItem } from "./components/main/ResultsItem/ResultsItem.tsx";
+import { ResultsContainer } from "./components/main/results/ResultsContainer/ResultsContainer.tsx";
+import { ResultsItem } from "./components/main/results/ResultsItem/ResultsItem.tsx";
 // import { ProtectedRoute } from "./routes/ProtectedRoute.tsx";
 
 const RouterWrapper = () => {

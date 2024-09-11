@@ -1,5 +1,5 @@
 import "./TasksPage.scss";
-import { TasksContainer } from "../../components/main/TasksContainer/TasksContainer";
+import { TasksContainer } from "../../components/main/tasks/TasksContainer/TasksContainer";
 
 function TasksPage() {
     return (
