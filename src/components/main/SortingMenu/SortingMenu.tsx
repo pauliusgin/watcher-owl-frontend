@@ -1,11 +1,10 @@
 import "./SortingMenu.scss";
-import { useContext, ChangeEvent } from "react";
-import { DataContext } from "../../../context/DataContext";
+import { ChangeEvent } from "react";
 import { sortingItems } from "../../../utils/sortingUtils";
+import { useData } from "../../../hooks/custom.hooks";
 
 function SortingMenu() {
-	const { data, setData, sessionData, setSessionData } =
-		useContext(DataContext);
+	const { data, setData, sessionData, setSessionData } = useData();
 
 	function handleSortingItems(event: ChangeEvent<HTMLSelectElement>) {
 		const sortValue = event.target.value;

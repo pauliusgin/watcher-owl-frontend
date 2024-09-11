@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect, ReactNode } from "react";
-import { contactProxy } from "../services/contactProxy.service.ts";
+import { contactVinted } from "../services/vinted.services.ts";
 import { dataContextType, resultsItemType } from "../types/types";
 
 const DataContext = createContext<dataContextType>({
@@ -26,7 +26,7 @@ function DataContextProvider({ children }: { children: ReactNode }) {
 			if (searchQuery && searchQuery.length > 0) {
 				setIsLoading(true);
 
-				const results = await contactProxy(searchQuery);
+				const results = await contactVinted(searchQuery);
 
 				setData(results);
 
@@ -42,12 +42,14 @@ function DataContextProvider({ children }: { children: ReactNode }) {
 	}, [searchQuery]);
 
 	useEffect(() => {
-		const sessionNameDecoded = decodeURIComponent(location.search.slice(3));
+		if (location.search) {
+			const sessionNameDecoded = decodeURIComponent(location.search.slice(3));
 
-		const dataOnPageReload = JSON.parse(
-			sessionStorage.getItem(`${sessionNameDecoded}`) as string
-		);
-		setData(dataOnPageReload);
+			const dataOnPageReload = JSON.parse(
+				sessionStorage.getItem(`${sessionNameDecoded}`) as string
+			);
+			setData(dataOnPageReload);
+		}
 	}, []);
 
 	return (

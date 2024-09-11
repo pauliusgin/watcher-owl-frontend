@@ -1,46 +1,51 @@
 import { config } from "../../configs/config";
 import { userType } from "../types/types";
 
-async function addUserToDatabase(user: userType) {
-	try {
-		const response = await fetch(`${config.backend.server}/api/users`, {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify(user),
-		});
+async function addOrRetrieveUserFromDatabase({
+    given_name,
+    email,
+    picture,
+}: userType) {
+    try {
+        const response = await fetch(`${config.backend.server}/api/v1/users/`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ given_name, email, picture }),
+        });
 
-		if (!response.ok) throw new Error("Could not contact /api/users");
+        if (!response.ok) throw new Error("Could not contact /api/v1/users");
 
-		const userStatusInTheDatabase = await response.json();
+        const userStatusInTheDatabase = await response.json();
 
-		return userStatusInTheDatabase;
-	} catch (error) {
-		if (error instanceof Error)
-			console.log("Failed to send request to api/users", error.message);
-	}
+        return userStatusInTheDatabase;
+    } catch (error) {
+        if (error instanceof Error) {
+            console.log(error.message);
+        }
+    }
 }
 
-async function deleteUserFromDatabase(user: userType) {
-	try {
-		const response = await fetch(`${config.backend.server}/api/users`, {
-			method: "DELETE",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify(user),
-		});
+async function deleteUserFromDatabase({ email }: userType) {
+    try {
+        const response = await fetch(`${config.backend.server}/api/v1/users`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ email }),
+        });
 
-		if (!response.ok) throw new Error("Could not contact /api/users");
+        if (!response.ok) throw new Error("Could not contact /api/v1/users");
 
-		const deletedUser = await response.json();
+        const deletedUser = await response.json();
 
-		return deletedUser;
-	} catch (error) {
-		if (error instanceof Error)
-			console.log("Failed to send request to api/users", error.message);
-	}
+        return deletedUser;
+    } catch (error) {
+        if (error instanceof Error)
+            console.log("Failed to send request to api/users", error.message);
+    }
 }
 
-export { addUserToDatabase, deleteUserFromDatabase };
+export { addOrRetrieveUserFromDatabase, deleteUserFromDatabase };

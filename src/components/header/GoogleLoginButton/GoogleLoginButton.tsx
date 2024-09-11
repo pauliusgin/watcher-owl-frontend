@@ -49,7 +49,6 @@ function GoogleLoginButton() {
 				console.log("Login Failed");
 			}}
 			useOneTap
-			auto_select
 			shape="pill"
 		/>
 	);

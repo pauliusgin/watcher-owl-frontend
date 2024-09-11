@@ -1,7 +1,7 @@
 import "./SettingsPage.scss";
 import { DefaultButton } from "../../components/shared/DefaultButton/DefaultButton";
 import { deleteUserFromDatabase } from "../../services/user.services";
-import { useUser } from "../../hooks/useUser";
+import { useUser } from "../../hooks/custom.hooks";
 import { userType } from "../../types/types";
 
 function SettingsPage() {

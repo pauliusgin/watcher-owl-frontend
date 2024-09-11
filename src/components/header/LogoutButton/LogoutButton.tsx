@@ -2,7 +2,7 @@ import "./LogoutButton.scss";
 import { googleLogout } from "@react-oauth/google";
 import { useNavigate } from "react-router-dom";
 import { DefaultButton } from "../../shared/DefaultButton/DefaultButton.tsx";
-import { useUser } from "../../../hooks/useUser.ts";
+import { useUser } from "../../../hooks/custom.hooks.ts";
 import { userType } from "../../../types/types";
 
 const LogoutButton = () => {

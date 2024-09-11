@@ -2,23 +2,41 @@
 @use "../../../styles/mixins.scss" as *;
 
 .main__results {
-	&_container {
-		width: 100%;
-		padding-top: 2rem;
-		align-self: flex-start;
-		display: flex;
-		flex-direction: column;
-		align-items: flex-start;
-		gap: 2rem;
-		margin: 2rem 0 1rem 0;
-		flex-grow: 1;
-	}
+    &_container {
+        width: 100%;
+        padding-top: 2rem;
+        align-self: flex-start;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2rem;
+        margin: 2rem 0 1rem 0;
+        flex-grow: 1;
+    }
 
-	&_item-query {
-		margin-bottom: 1rem;
-		color: $white;
-	}
-	&_query-span {
-		color: $yellow-300;
-	}
+    &_item-query {
+        margin-bottom: 1rem;
+        color: $white;
+    }
+
+    &_query-span {
+        color: $yellow-300;
+    }
+
+    &_save-search_container {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        &_confirmation {
+            color: $foreground-inactive;
+        }
+
+        &_confirmation-link {
+            @include tabFocusOutline;
+            &:hover {
+                color: $yellow-300;
+            }
+        }
+    }
 }

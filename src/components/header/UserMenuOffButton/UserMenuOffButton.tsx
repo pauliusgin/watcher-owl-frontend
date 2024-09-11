@@ -1,5 +1,5 @@
 import "./UserMenuOffButton.scss";
-import { useUser } from "../../../hooks/useUser";
+import { useUser } from "../../../hooks/custom.hooks";
 import { DefaultButton } from "../../shared/DefaultButton/DefaultButton";
 
 function UserMenuOffButton() {

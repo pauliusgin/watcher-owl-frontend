@@ -1,11 +1,11 @@
 import "./SearchForm.scss";
-import { useContext, useState, SyntheticEvent } from "react";
+import { useState, SyntheticEvent } from "react";
 import { useNavigate } from "react-router-dom";
-import { DataContext } from "../../../context/DataContext";
+import { useData } from "../../../hooks/custom.hooks";
 import { OffButton } from "../../shared/OffButton/OffButton";
 
 const SearchForm = () => {
-	const { setSearchQuery } = useContext(DataContext);
+	const { setSearchQuery } = useData();
 	const [inputText, setInputText] = useState<string | null>("");
 	const navigate = useNavigate();
 
@@ -21,10 +21,11 @@ const SearchForm = () => {
 				: null;
 
 			setSearchQuery(inputTextArray);
-			// setInputText("");
 
 			const sessionName = inputTextArray?.join("+");
 
+			// TODO pagal search query nustatomas location objekto search propsas ir
+			// TODO uždedamas "sessionName" state
 			navigate(`/results/search?q=${sessionName}`, {
 				state: { sessionName: sessionName },
 			});
