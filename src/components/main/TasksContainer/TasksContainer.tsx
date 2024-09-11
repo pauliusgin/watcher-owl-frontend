@@ -10,7 +10,7 @@ function TasksContainer() {
         return <LoadingAnimation />;
     }
 
-    if (!tasks || tasks.length === 0) {
+    if (tasks && tasks.length === 0) {
         return (
             <p className="main__tasks_no-tasks-message">
                 Jūs neturite jokių užduočių

@@ -10,26 +10,33 @@ const TaskContext = createContext<tasksContextType>({
     setTasksLoading: () => {},
     saveSuccessful: false,
     setSaveSuccessful: () => {},
+    taskControlsVisibility: {},
+    setTaskControlsVisibility: () => {},
 });
 
 function TasksContextProvider({ children }: { children: ReactNode }) {
     const [tasks, setTasks] = useState<saveTaskOutput[] | undefined>(undefined);
     const [tasksLoading, setTasksLoading] = useState<boolean>(false);
     const [saveSuccessful, setSaveSuccessful] = useState(false);
+    const [taskControlsVisibility, setTaskControlsVisibility] = useState<{
+        [key: string]: boolean;
+    }>({});
     const { user } = useUser();
 
     useEffect(() => {
         async function getInfoAboutTasks() {
-            setTasksLoading(true);
+            if (user && user.userId) {
+                setTasksLoading(true);
 
-            const userTasks = await getUserTasks(user?.userId as string);
+                const userTasks = await getUserTasks(user?.userId as string);
 
-            setTasks(userTasks);
+                setTasks(userTasks);
 
-            setTasksLoading(false);
+                setTasksLoading(false);
+            }
         }
         getInfoAboutTasks();
-    }, [user]);
+    }, [user, user?.userId]);
 
     return (
         <TaskContext.Provider
@@ -40,6 +47,8 @@ function TasksContextProvider({ children }: { children: ReactNode }) {
                 setTasksLoading,
                 saveSuccessful,
                 setSaveSuccessful,
+                taskControlsVisibility,
+                setTaskControlsVisibility,
             }}>
             {children}
         </TaskContext.Provider>

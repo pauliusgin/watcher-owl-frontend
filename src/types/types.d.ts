@@ -28,6 +28,10 @@ type tasksContextType = {
     setTasksLoading: Dispatch<SetStateAction<boolean>>;
     saveSuccessful: boolean;
     setSaveSuccessful: Dispatch<SetStateAction<boolean>>;
+    taskControlsVisibility: { [key: string]: boolean };
+    setTaskControlsVisibility: Dispatch<
+        SetStateAction<{ [key: string]: boolean }>
+    >;
 };
 
 type resultsItemType = {
@@ -65,6 +69,10 @@ type userType = {
 
 type userMenuVisibilityType = {
     toggleUserMenuVisibility: () => void;
+};
+
+type taskControlsVisibilityType = {
+    toggleTaskControlsVisibility: (userId: string) => void;
 };
 
 type defaultButtonType = {

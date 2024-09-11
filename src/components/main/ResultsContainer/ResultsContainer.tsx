@@ -3,7 +3,7 @@ import { NavLink, Outlet, useLocation } from "react-router-dom";
 import { SortingMenu } from "../SortingMenu/SortingMenu";
 import { LoadingAnimation } from "../../shared/LoadingAnimation/LoadingAnimation";
 import { useData, useTasks } from "../../../hooks/custom.hooks";
-import { SaveTaskButton } from "../SaveTaskButton/SaveTaskButton";
+import { TaskSaveButton } from "../TaskSaveButton/TaskSaveButton";
 
 function ResultsContainer() {
     const { searchQuery, data, sessionData, isLoading } = useData();
@@ -45,7 +45,7 @@ function ResultsContainer() {
                     </span>
                 </p>
                 <div className="main__results_save-search_container">
-                    <SaveTaskButton />
+                    <TaskSaveButton />
                     {saveSuccessful && (
                         <p className="main__results_save-search_container_confirmation">
                             Paieška išsaugota. Ją peržiūrėti galite skiltyje

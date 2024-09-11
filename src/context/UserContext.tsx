@@ -66,7 +66,7 @@ function UserContextProvider({ children }: { children: ReactNode }) {
         }
 
         onPageReload();
-    }, [setTasks]);
+    }, []);
 
     return (
         <UserContext.Provider

@@ -1,4 +1,4 @@
-import "./SaveTaskButton.scss";
+import "./TaskSaveButton.scss";
 import {
     addTaskToDatabase,
     getUserTasks,
@@ -9,7 +9,7 @@ import { DefaultButton } from "../../shared/DefaultButton/DefaultButton";
 import { Notification } from "../../../types/enumsAndInterfaces";
 import { resultsItemType } from "../../../types/types";
 
-const SaveTaskButton = () => {
+const TaskSaveButton = () => {
     const { user } = useUser();
     const { data, searchQuery } = useData();
     const { setTasks, setSaveSuccessful } = useTasks();
@@ -52,4 +52,4 @@ const SaveTaskButton = () => {
     );
 };
 
-export { SaveTaskButton };
+export { TaskSaveButton };
