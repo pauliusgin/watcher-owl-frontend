@@ -1,9 +1,9 @@
-import "./TasksContainer.scss";
+import "./TaskContainer.scss";
 import { useTasks } from "../../../../hooks/custom.hooks";
 import { LoadingAnimation } from "../../../shared/LoadingAnimation/LoadingAnimation";
-import { TasksItem } from "../TasksItem/TasksItem";
+import { TaskItem } from "../TaskItem/TaskItem";
 
-function TasksContainer() {
+function TaskContainer() {
     const { tasks, tasksLoading } = useTasks();
 
     if (tasksLoading) {
@@ -21,10 +21,10 @@ function TasksContainer() {
     if (tasks && tasks.length > 0) {
         return (
             <div className="main__tasks_container">
-                <TasksItem />
+                <TaskItem />
             </div>
         );
     }
 }
 
-export { TasksContainer };
+export { TaskContainer };

@@ -2,12 +2,23 @@
 @use "../../../../styles/mixins.scss" as *;
 
 .task_controls__menu {
+    // border: 1px solid red;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    justify-content: flex-start;
+    align-items: center;
     z-index: 3;
     position: absolute;
     top: -60px;
     right: 0;
     width: 100px;
+    @include for-sizes-up-from(xsm) {
+        display: none;
+    }
+
+    .main__tasks_task_controls_activation-button,
+    .main__tasks_task_controls_delete-button,
+    .main__tasks_task_controls_notification-select {
+        display: block;
+    }
 }

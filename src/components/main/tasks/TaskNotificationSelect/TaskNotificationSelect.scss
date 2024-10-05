@@ -9,7 +9,6 @@
     border: none;
     color: white;
     padding: 0.5rem;
-    height: 70%;
 
     &:focus {
         outline: none;
@@ -17,6 +16,16 @@
 
     &:hover {
         color: $yellow-300;
+    }
+
+    &-label {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    &-span {
+            font-size: 10px;
+            padding-bottom: 0.5rem
+        }
     }
     @include tabFocusOutline;
 }

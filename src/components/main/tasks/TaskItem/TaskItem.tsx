@@ -1,4 +1,4 @@
-import "./TasksItem.scss";
+import "./TaskItem.scss";
 import { useTasks } from "../../../../hooks/custom.hooks";
 import { saveTaskOutput } from "../../../../services/tasks.services";
 import { TaskControlsToggleButton } from "../TaskControlsToggleButton/TaskControlsToggleButton";
@@ -8,7 +8,7 @@ import { TaskDeleteButton } from "../TaskDeleteButton/TaskDeleteButton";
 import { NavLink } from "react-router-dom";
 import { TaskNotificationSelect } from "../TaskNotificationSelect/TaskNotificationSelect";
 
-function TasksItem() {
+function TaskItem() {
     const { tasks, taskControlsVisibility, setTaskControlsVisibility } =
         useTasks();
 
@@ -28,7 +28,7 @@ function TasksItem() {
                             <div className="main__tasks_task_item-title">
                                 <NavLink
                                     className="main__tasks_task_item-nav-link"
-                                    to="#">
+                                    to={`/tasks/${task._id}`}>
                                     <h4 className="main__tasks_task_item-title-text">
                                         {task.search.replaceAll("+", ", ")}
                                     </h4>
@@ -37,7 +37,7 @@ function TasksItem() {
                             <div className="main__tasks_task_item-thumbnail">
                                 <NavLink
                                     className="main__tasks_task_item-thumbnail-link"
-                                    to="#">
+                                    to={String( task?.items?.[0].full_size_url )}>
                                     <img
                                         src={task?.items?.[0].photo}
                                         alt="thumbnail"
@@ -73,4 +73,4 @@ function TasksItem() {
     }
 }
 
-export { TasksItem };
+export { TaskItem };

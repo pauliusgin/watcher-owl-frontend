@@ -8,6 +8,9 @@ function TaskNotificationSelect() {
             <label
                 className="main__tasks_task_controls_notification-select-label"
                 htmlFor="select-method">
+                <span className="main__tasks_task_controls_notification-select-label-span">
+                    Pranešimai
+                </span>
                 <select
                     className="main__tasks_task_controls_notification-select"
                     name="select-method"
@@ -16,9 +19,8 @@ function TaskNotificationSelect() {
                     onChange={handleSelectNotificationMethod}>
                     <option
                         className="main__tasks_task_controls_notification-select-option"
-                        value="default"
-                        disabled>
-                        Pranešimai
+                        value="none">
+                        Išjungti
                     </option>
                     <option
                         className="main__tasks_task_controls_notification-select-option"
@@ -29,11 +31,6 @@ function TaskNotificationSelect() {
                         className="main__tasks_task_controls_notification-select-option"
                         value="sms">
                         SMS
-                    </option>
-                    <option
-                        className="main__tasks_task_controls_notification-select-option"
-                        value="none">
-                        Išjungti
                     </option>
                 </select>
             </label>
