@@ -1,7 +1,13 @@
 import "./TaskNotificationSelect.scss";
 
-function TaskNotificationSelect() {
-    function handleSelectNotificationMethod() {}
+interface TaskNotificationSelectProps {
+    taskId?: string;
+}
+
+function TaskNotificationSelect({ taskId }: TaskNotificationSelectProps) {
+    function handleSelectNotificationMethod(taskId: string) {
+        console.log("notification selected for task:", taskId);
+    }
 
     return (
         <>
@@ -16,7 +22,11 @@ function TaskNotificationSelect() {
                     name="select-method"
                     title="Notification"
                     id="select-method"
-                    onChange={handleSelectNotificationMethod}>
+                    onChange={() => {
+                        if (taskId) {
+                            handleSelectNotificationMethod(taskId);
+                        }
+                    }}>
                     <option
                         className="main__tasks_task_controls_notification-select-option"
                         value="none">

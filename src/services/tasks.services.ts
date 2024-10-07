@@ -93,7 +93,7 @@ async function deleteTaskFromDatabase(taskId: string) {
 async function getUserTasks(userId: string) {
     try {
         const response = await fetch(
-            `${config.backend.server}/api/v1/tasks/${userId}`,
+            `${config.backend.server}/api/v1/tasks/users/${userId}`,
             {
                 method: "GET",
                 headers: { "Content-Type": "application/json" },
@@ -109,4 +109,51 @@ async function getUserTasks(userId: string) {
     }
 }
 
-export { addTaskToDatabase, deleteTaskFromDatabase, getUserTasks };
+async function getTaskById(taskId: string) {
+    try {
+        const response = await fetch(
+            `${config.backend.server}/api/v1/tasks/${taskId}`,
+            {
+                method: "GET",
+                headers: { "Content-Type": "application/json" },
+            }
+        );
+
+        const task = await response.json();
+
+        return task;
+    } catch (error) {
+        if (error instanceof Error) {
+            console.log(error.message);
+        }
+    }
+}
+
+async function toggleTaskActivity(taskId: string, isActive: boolean) {
+    try {
+        const response = await fetch(
+            `${config.backend.server}/api/v1/tasks/${taskId}`,
+            {
+                method: "PATCH",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    isActive,
+                }),
+            }
+        );
+
+        return await response.json();
+    } catch (error) {
+        if (error instanceof Error) {
+            console.log(error.message);
+        }
+    }
+}
+
+export {
+    addTaskToDatabase,
+    deleteTaskFromDatabase,
+    getUserTasks,
+    getTaskById,
+    toggleTaskActivity,
+};

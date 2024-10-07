@@ -62,9 +62,9 @@ function TaskItem() {
                                     taskId={task._id}
                                 />
                             )}
-                            <TaskActivationButton />
-                            <TaskDeleteButton />
-                            <TaskNotificationSelect />
+                            <TaskActivationButton taskId={task._id}/>
+                            <TaskDeleteButton taskId={task._id}/>
+                            <TaskNotificationSelect taskId={task._id}/>
                         </div>
                     </div>
                 ))}

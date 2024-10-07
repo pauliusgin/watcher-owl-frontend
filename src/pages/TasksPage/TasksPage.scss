@@ -1,6 +1,12 @@
 #tasks-page {
 	display: flex;
 	flex-direction: column;
-	align-items: center;
+	align-items: flex-start;
 	justify-content: center;
+	margin-top: 2rem;
+
+
+	.loader__element {
+		align-self: center; 
+	}
 }
