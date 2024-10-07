@@ -8,11 +8,12 @@ import { useData } from "../../../../hooks/custom.hooks";
 import { DefaultButton } from "../../../shared/DefaultButton/DefaultButton";
 import { Notification } from "../../../../types/enumsAndInterfaces";
 import { resultsItemType } from "../../../../types/types";
+import { useEffect } from "react";
 
 const TaskSaveButton = () => {
     const { user } = useUser();
     const { data, searchQuery } = useData();
-    const { setTasks, setSaveSuccessful } = useTasks();
+    const { setTasks, saveSuccessful, setSaveSuccessful } = useTasks();
 
     async function handleSaveTask() {
         const result = await addTaskToDatabase({
@@ -39,6 +40,16 @@ const TaskSaveButton = () => {
             setTasks(allTasks);
         }
     }
+
+    useEffect(() => {
+        if (saveSuccessful) {
+            const timer = setTimeout(() => {
+                setSaveSuccessful(false);
+            }, 3000);
+
+            return () => clearTimeout(timer);
+        }
+    }, [saveSuccessful, setSaveSuccessful]);
 
     return (
         <DefaultButton

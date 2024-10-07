@@ -60,7 +60,6 @@ async function addTaskToDatabase({
 
         const savedTask = await response.json();
 
-        console.log("saved task:", savedTask);
         return savedTask;
     } catch (error) {
         if (error instanceof Error) {
@@ -69,7 +68,7 @@ async function addTaskToDatabase({
     }
 }
 
-async function deleteTaskFromDatabase(taskId: string) {
+async function deleteTask(taskId: string) {
     try {
         const response = await fetch(
             `${config.backend.server}/api/v1/tasks/${taskId}`,
@@ -82,8 +81,10 @@ async function deleteTaskFromDatabase(taskId: string) {
         );
 
         if (!response.ok) {
-            console.log("get tasks response not ok");
+            console.log("delete task failed");
         }
+
+        return response;
     } catch (error) {
         if (error instanceof Error)
             console.log("Failed to send request to api/tasks", error.message);
@@ -132,7 +133,7 @@ async function getTaskById(taskId: string) {
 async function toggleTaskActivity(taskId: string, isActive: boolean) {
     try {
         const response = await fetch(
-            `${config.backend.server}/api/v1/tasks/${taskId}`,
+            `${config.backend.server}/api/v1/tasks/${taskId}/toggle`,
             {
                 method: "PATCH",
                 headers: { "Content-Type": "application/json" },
@@ -150,10 +151,37 @@ async function toggleTaskActivity(taskId: string, isActive: boolean) {
     }
 }
 
+async function selectNotificationMethod(
+    taskId: string,
+    notification: Notification
+) {
+    console.log("request (services):", taskId, notification);
+    try {
+        const response = await fetch(
+            `${config.backend.server}/api/v1/tasks/${taskId}/notify`,
+            {
+                method: "PATCH",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    notification,
+                }),
+            }
+        );
+        console.log("response (services)", response);
+
+        return await response.json();
+    } catch (error) {
+        if (error instanceof Error) {
+            console.log(error.message);
+        }
+    }
+}
+
 export {
     addTaskToDatabase,
-    deleteTaskFromDatabase,
+    deleteTask,
     getUserTasks,
     getTaskById,
     toggleTaskActivity,
+    selectNotificationMethod,
 };
