@@ -60,7 +60,6 @@ async function addTaskToDatabase({
 
         const savedTask = await response.json();
 
-        console.log("saved task:", savedTask);
         return savedTask;
     } catch (error) {
         if (error instanceof Error) {
@@ -69,7 +68,7 @@ async function addTaskToDatabase({
     }
 }
 
-async function deleteTaskFromDatabase(taskId: string) {
+async function deleteTask(taskId: string) {
     try {
         const response = await fetch(
             `${config.backend.server}/api/v1/tasks/${taskId}`,
@@ -82,8 +81,10 @@ async function deleteTaskFromDatabase(taskId: string) {
         );
 
         if (!response.ok) {
-            console.log("get tasks response not ok");
+            console.log("delete task failed");
         }
+
+        return response;
     } catch (error) {
         if (error instanceof Error)
             console.log("Failed to send request to api/tasks", error.message);
@@ -93,7 +94,7 @@ async function deleteTaskFromDatabase(taskId: string) {
 async function getUserTasks(userId: string) {
     try {
         const response = await fetch(
-            `${config.backend.server}/api/v1/tasks/${userId}`,
+            `${config.backend.server}/api/v1/tasks/users/${userId}`,
             {
                 method: "GET",
                 headers: { "Content-Type": "application/json" },
@@ -109,4 +110,78 @@ async function getUserTasks(userId: string) {
     }
 }
 
-export { addTaskToDatabase, deleteTaskFromDatabase, getUserTasks };
+async function getTaskById(taskId: string) {
+    try {
+        const response = await fetch(
+            `${config.backend.server}/api/v1/tasks/${taskId}`,
+            {
+                method: "GET",
+                headers: { "Content-Type": "application/json" },
+            }
+        );
+
+        const task = await response.json();
+
+        return task;
+    } catch (error) {
+        if (error instanceof Error) {
+            console.log(error.message);
+        }
+    }
+}
+
+async function toggleTaskActivity(taskId: string, isActive: boolean) {
+    try {
+        const response = await fetch(
+            `${config.backend.server}/api/v1/tasks/${taskId}/toggle`,
+            {
+                method: "PATCH",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    isActive,
+                }),
+            }
+        );
+
+        return await response.json();
+    } catch (error) {
+        if (error instanceof Error) {
+            console.log(error.message);
+        }
+    }
+}
+
+async function selectNotificationMethod(
+    taskId: string,
+    notification: Notification
+) {
+    console.log("request (services):", taskId, notification);
+    try {
+        const response = await fetch(
+            `${config.backend.server}/api/v1/tasks/${taskId}/notify`,
+            {
+                method: "PATCH",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    notification,
+                }),
+            }
+        );
+        console.log("response (services)", response);
+
+        return await response.json();
+    } catch (error) {
+        if (error instanceof Error) {
+            console.log(error.message);
+        }
+    }
+}
+
+export {
+    addTaskToDatabase,
+    deleteTask,
+    getUserTasks,
+    getTaskById,
+    toggleTaskActivity,
+    selectNotificationMethod,
+};

@@ -1,0 +1,62 @@
+@use "../../../../styles/variables.scss" as *;
+@use "../../../../styles/mixins.scss" as *;
+
+.main__tasks_task_item-details {
+    &_title-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    &_title-span {
+        font-weight: 600;
+        color: white;
+        margin-right: 1rem;
+    }
+
+    &_title-title {
+        font-weight: 400;
+        color: $yellow-300;
+    }
+
+    &_title-controls {
+        display: flex;
+        align-items: last baseline;
+        border-bottom: 1px solid $background-active;
+
+        .main__tasks_task_controls_notification-select-label-span,
+        .main__tasks_task_controls_activation-button,
+        .main__tasks_task_controls_delete-button,
+        .main__tasks_task_controls_notification-select {
+            display: block;
+        }
+    }
+
+    &_item {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1rem;
+
+        &-description {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            & a {
+                @include tabFocusOutline;
+            }
+        }
+
+        &-title {
+            color: $yellow-300;
+            font-weight: 600;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+
+        &-image a {
+            @include tabFocusOutline;
+        }
+    }
+}

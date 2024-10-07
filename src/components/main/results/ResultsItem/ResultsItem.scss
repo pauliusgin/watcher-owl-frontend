@@ -1,0 +1,29 @@
+@use "../../../../styles/variables.scss" as *;
+@use "../../../../styles/mixins.scss" as *;
+
+.main__results_item {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+
+    &-description {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        & a {
+            @include tabFocusOutline;
+        }
+    }
+
+    &-title {
+        color: $yellow-300;
+        font-weight: 600;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    &-image a {
+        @include tabFocusOutline;
+    }
+}

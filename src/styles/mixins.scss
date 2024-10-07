@@ -9,7 +9,7 @@
         }
     }
     @if $size == xsm {
-        @media (width >= 500px) {
+        @media (width >= 550px) {
             @content;
         }
     }

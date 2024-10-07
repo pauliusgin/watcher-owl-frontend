@@ -1,0 +1,85 @@
+@use "../../../../styles/variables.scss" as *;
+@use "../../../../styles/mixins.scss" as *;
+
+.search__form {
+    border: 1px solid $background-active;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 18rem;
+    max-width: 36rem;
+    @include for-sizes-up-from(sm) {
+        width: 70vw;
+    }
+    padding: 0.5rem 1rem;
+    margin-bottom: 2rem;
+
+    &:hover {
+        background-color: $background-active;
+
+        & .search__form_input,
+        & .search__form_button {
+            background-color: $background-active;
+            color: $foreground-active;
+        }
+        & .search__form_icon {
+            fill: $foreground-active;
+        }
+        & .search__form_separator line {
+            stroke: $foreground-active;
+        }
+        & .search__form_off-button {
+            background-color: $background-active;
+        }
+    }
+
+    &_icon-container {
+        width: 3rem;
+    }
+
+    &_icon {
+        height: 1.5rem;
+        fill: $foreground-inactive;
+    }
+
+    &_input {
+        height: 1.5rem;
+        flex-grow: 1;
+        font-size: 1rem;
+        color: $foreground-active;
+        background-color: $background;
+        border: none;
+        &:focus {
+            outline: none;
+        }
+    }
+
+    &_off-button {
+        @include buttonDefault;
+        @include buttonDark;
+        @include offButton;
+        @include tabFocusOutline;
+    }
+
+    &_separator-container {
+        width: 1rem;
+        padding: 0.4rem;
+    }
+
+    &_separator line {
+        stroke: $foreground-inactive;
+    }
+
+    &_button,
+    #form-submit-button {
+        width: 4rem;
+        height: 1.5rem;
+        color: $foreground-inactive;
+        background-color: $background;
+    }
+    & #search-form-submit-button {
+        @include buttonDefault;
+        @include tabFocusOutline;
+    }
+}

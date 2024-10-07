@@ -1,10 +1,10 @@
+import { Outlet } from "react-router-dom";
 import "./TasksPage.scss";
-import { TasksContainer } from "../../components/main/TasksContainer/TasksContainer";
 
 function TasksPage() {
     return (
         <div className="page" id="tasks-page">
-            <TasksContainer />
+            <Outlet />
         </div>
     );
 }

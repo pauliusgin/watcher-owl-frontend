@@ -1,0 +1,16 @@
+@use "../../../../styles/variables.scss" as *;
+@use "../../../../styles/mixins.scss" as *;
+
+.main__results_sort {
+    background: $background;
+    color: $yellow-300;
+    text-align: center;
+    width: fit-content;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    &:focus {
+        outline: none;
+    }
+    @include tabFocusOutline;
+}

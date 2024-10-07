@@ -1,0 +1,23 @@
+@use "../../../../styles/variables.scss" as *;
+@use "../../../../styles/mixins.scss" as *;
+
+.task_controls__menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    z-index: 3;
+    position: absolute;
+    top: -60px;
+    right: 0;
+    width: 100px;
+    @include for-sizes-up-from(xsm) {
+        display: none;
+    }
+
+    .main__tasks_task_controls_activation-button,
+    .main__tasks_task_controls_delete-button,
+    .main__tasks_task_controls_notification-select {
+        display: block;
+    }
+}

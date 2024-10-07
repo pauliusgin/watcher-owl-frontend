@@ -1,0 +1,13 @@
+@use "../../../../styles/mixins.scss" as *;
+@use "../../../../styles//variables.scss" as *;
+
+.main__tasks_task_controls_delete-button {
+    @include tabFocusOutline;
+    @include buttonDefault;
+    @include buttonDark;
+
+    padding: 0.5rem 1.5rem 0.5rem 0.5rem;
+    @include for-sizes-up-from(xsm) {
+        padding: 0.5rem;
+    }
+}
