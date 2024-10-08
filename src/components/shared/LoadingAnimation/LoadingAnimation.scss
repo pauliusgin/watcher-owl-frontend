@@ -1,38 +1,39 @@
 @use "../../../styles/variables.scss" as *;
 
+.loader__element {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .loader__element_one {
-	width: 5px;
-	aspect-ratio: 1;
-	border-radius: 50%;
-	animation-name: dots;
-	animation-duration: 1.5s;
-	animation-iteration-count: infinite;
-	animation-direction: alternate;
-	animation-timing-function: linear;
+    align-self: center;
+    width: 5px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    animation-name: dots;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: linear;
 }
 @keyframes dots {
-	0% {
-		box-shadow:
-			20px 0 $yellow-100,
-			-20px 0 $yellow-600;
-		background: $yellow-100;
-	}
-	33% {
-		box-shadow:
-			20px 0 $yellow-100,
-			-20px 0 $yellow-600;
-		background: $yellow-600;
-	}
-	66% {
-		box-shadow:
-			20px 0 $yellow-600,
-			-20px 0 $yellow-100;
-		background: $yellow-600;
-	}
-	100% {
-		box-shadow:
-			20px 0 $yellow-600,
-			-20px 0 $yellow-100;
-		background: $yellow-100;
-	}
+    0% {
+        box-shadow: 20px 0 $yellow-100, -20px 0 $yellow-600;
+        background: $yellow-100;
+    }
+    33% {
+        box-shadow: 20px 0 $yellow-100, -20px 0 $yellow-600;
+        background: $yellow-600;
+    }
+    66% {
+        box-shadow: 20px 0 $yellow-600, -20px 0 $yellow-100;
+        background: $yellow-600;
+    }
+    100% {
+        box-shadow: 20px 0 $yellow-600, -20px 0 $yellow-100;
+        background: $yellow-100;
+    }
 }

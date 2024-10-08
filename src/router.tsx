@@ -14,25 +14,53 @@ import { ResultsContainer } from "./components/main/results/ResultsContainer/Res
 import { ResultsItem } from "./components/main/results/ResultsItem/ResultsItem.tsx";
 import { TaskContainer } from "./components/main/tasks/TaskContainer/TaskContainer.tsx";
 import { TaskItemDetails } from "./components/main/tasks/TaskItemDetails/TaskItemDetails.tsx";
-// import { ProtectedRoute } from "./routes/ProtectedRoute.tsx";
+import { useAuth } from "./hooks/custom.hooks.ts";
+import { useEffect, useState } from "react";
+import { LoadingAnimation } from "./components/shared/LoadingAnimation/LoadingAnimation.tsx";
 
 const RouterWrapper = () => {
+    const { token } = useAuth();
+
+    const [pageLoading, setPageLoading] = useState<boolean>(true);
+
+    useEffect(() => {
+        const sessionToken = sessionStorage.getItem("token");
+
+        if (!sessionToken) {
+            setPageLoading(false);
+        }
+
+        if (sessionToken || token) {
+            setPageLoading(false);
+        }
+    }, [token]);
+
+    if (pageLoading) {
+        return <LoadingAnimation />;
+    }
+
     const router = createBrowserRouter(
         createRoutesFromElements(
             <Route path="/" element={<Root />} errorElement={<ErrorPage />}>
                 <Route path="/" element={<HomePage />}>
-                    <Route path="/results" element={<ResultsContainer />} errorElement={<div></div>}>
+                    <Route
+                        path="/results"
+                        element={<ResultsContainer />}
+                        errorElement={<div></div>}>
                         <Route path="/results/*" element={<ResultsItem />} />
                     </Route>
                 </Route>
                 <Route path="/login" element={<LoginPage />} />
-                {/* <Route element={<ProtectedRoute />}> */}
-                <Route path="/tasks" element={<TasksPage />} >
-                    <Route index element={<TaskContainer />} />
-                    <Route path="/tasks/:id" element={<TaskItemDetails />} />
-                </Route>
-                <Route path="/settings" element={<SettingsPage />} />
-                {/* </Route> */}
+                {token && (
+                    <Route path="/tasks" element={<TasksPage />}>
+                        <Route index element={<TaskContainer />} />
+                        <Route
+                            path="/tasks/:id"
+                            element={<TaskItemDetails />}
+                        />
+                    </Route>
+                )}
+                {token && <Route path="/settings" element={<SettingsPage />} />}
             </Route>
         )
     );

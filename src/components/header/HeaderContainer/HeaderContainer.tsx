@@ -27,7 +27,7 @@ const Header = () => {
                             <NavLink
                                 className="header__nav__link"
                                 to={`/tasks`}>
-                                Užduotys
+                                Paieškos
                             </NavLink>
                         </li>
                     )}

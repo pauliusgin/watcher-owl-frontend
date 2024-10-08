@@ -64,7 +64,6 @@ type userType = {
     email: string;
     picture?: string;
     isLoggedIn: boolean;
-    sessionExpirationDate: number;
 };
 
 type userMenuVisibilityType = {

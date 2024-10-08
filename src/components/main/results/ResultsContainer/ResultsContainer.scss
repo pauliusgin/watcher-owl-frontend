@@ -38,5 +38,16 @@
                 color: $yellow-300;
             }
         }
+
+        &_login-prompt {
+            color: $foreground-inactive;
+        }
+
+        &_login-prompt-link {
+            @include tabFocusOutline;
+            &:hover {
+                color: $white;
+            }
+        }
     }
 }

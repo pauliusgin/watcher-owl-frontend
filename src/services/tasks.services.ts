@@ -38,11 +38,14 @@ async function addTaskToDatabase({
     notification,
     items,
 }: saveTaskInput) {
+    const token = sessionStorage.getItem("token");
+
     try {
         const response = await fetch(`${config.backend.server}/api/v1/tasks/`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
             },
             body: JSON.stringify({
                 userId,
@@ -69,6 +72,8 @@ async function addTaskToDatabase({
 }
 
 async function deleteTask(taskId: string) {
+    const token = sessionStorage.getItem("token");
+
     try {
         const response = await fetch(
             `${config.backend.server}/api/v1/tasks/${taskId}`,
@@ -76,6 +81,7 @@ async function deleteTask(taskId: string) {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
                 },
             }
         );
@@ -92,12 +98,17 @@ async function deleteTask(taskId: string) {
 }
 
 async function getUserTasks(userId: string) {
+    const token = sessionStorage.getItem("token");
+
     try {
         const response = await fetch(
             `${config.backend.server}/api/v1/tasks/users/${userId}`,
             {
                 method: "GET",
-                headers: { "Content-Type": "application/json" },
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
             }
         );
         const userTasks = await response.json();
@@ -111,12 +122,17 @@ async function getUserTasks(userId: string) {
 }
 
 async function getTaskById(taskId: string) {
+    const token = sessionStorage.getItem("token");
+
     try {
         const response = await fetch(
             `${config.backend.server}/api/v1/tasks/${taskId}`,
             {
                 method: "GET",
-                headers: { "Content-Type": "application/json" },
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
             }
         );
 
@@ -131,12 +147,17 @@ async function getTaskById(taskId: string) {
 }
 
 async function toggleTaskActivity(taskId: string, isActive: boolean) {
+    const token = sessionStorage.getItem("token");
+
     try {
         const response = await fetch(
             `${config.backend.server}/api/v1/tasks/${taskId}/toggle`,
             {
                 method: "PATCH",
-                headers: { "Content-Type": "application/json" },
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
                 body: JSON.stringify({
                     isActive,
                 }),
@@ -155,19 +176,22 @@ async function selectNotificationMethod(
     taskId: string,
     notification: Notification
 ) {
-    console.log("request (services):", taskId, notification);
+    const token = sessionStorage.getItem("token");
+
     try {
         const response = await fetch(
             `${config.backend.server}/api/v1/tasks/${taskId}/notify`,
             {
                 method: "PATCH",
-                headers: { "Content-Type": "application/json" },
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
                 body: JSON.stringify({
                     notification,
                 }),
             }
         );
-        console.log("response (services)", response);
 
         return await response.json();
     } catch (error) {

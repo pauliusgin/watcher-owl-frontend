@@ -13,7 +13,7 @@ function TaskContainer() {
     if (tasks && tasks.length === 0) {
         return (
             <p className="main__tasks_no-tasks-message">
-                Jūs neturite jokių užduočių
+                Jūs neturite jokių išsaugotų paieškų.
             </p>
         );
     }

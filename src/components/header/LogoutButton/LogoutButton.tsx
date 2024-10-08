@@ -2,33 +2,46 @@ import "./LogoutButton.scss";
 import { googleLogout } from "@react-oauth/google";
 import { useNavigate } from "react-router-dom";
 import { DefaultButton } from "../../shared/DefaultButton/DefaultButton.tsx";
-import { useUser } from "../../../hooks/custom.hooks.ts";
-import { userType } from "../../../types/types";
+import { useUser, useAuth } from "../../../hooks/custom.hooks.ts";
+import { useState } from "react";
+import { LoadingAnimation } from "../../shared/LoadingAnimation/LoadingAnimation.tsx";
 
 const LogoutButton = () => {
-	const { setUser } = useUser();
-	const navigate = useNavigate();
+    const [pageLoading, setPageLoading] = useState<boolean>(false);
 
-	function logOutUser() {
-		googleLogout();
-		navigate("/");
+    const { setUser } = useUser();
+    const { setToken } = useAuth();
+    const navigate = useNavigate();
 
-		setUser((prev) => {
-			return {
-				...prev,
-				isLoggedIn: false,
-			} as userType;
-		});
-	}
+    function logOutUser() {
+        try {
+            setPageLoading(true);
 
-	return (
-		<DefaultButton
-			onClick={() => logOutUser()}
-			className="logout__button button"
-		>
-			Atsijungti
-		</DefaultButton>
-	);
+            googleLogout();
+
+            setToken(undefined);
+            sessionStorage.removeItem("token");
+
+            setUser(undefined);
+            sessionStorage.removeItem("userSession");
+
+            navigate("/");
+        } catch (error) {
+            console.log(error);
+        } finally {
+            setPageLoading(false);
+        }
+    }
+
+    return pageLoading ? (
+        <LoadingAnimation />
+    ) : (
+        <DefaultButton
+            onClick={() => logOutUser()}
+            className="logout__button button">
+            Atsijungti
+        </DefaultButton>
+    );
 };
 
 export { LogoutButton };

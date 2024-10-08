@@ -6,11 +6,14 @@ async function addOrRetrieveUserFromDatabase({
     email,
     picture,
 }: userType) {
+    const token = sessionStorage.getItem("token");
+
     try {
         const response = await fetch(`${config.backend.server}/api/v1/users/`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
             },
             body: JSON.stringify({ given_name, email, picture }),
         });
@@ -28,11 +31,14 @@ async function addOrRetrieveUserFromDatabase({
 }
 
 async function deleteUserFromDatabase({ email }: userType) {
+    const token = sessionStorage.getItem("token");
+
     try {
         const response = await fetch(`${config.backend.server}/api/v1/users`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
             },
             body: JSON.stringify({ email }),
         });

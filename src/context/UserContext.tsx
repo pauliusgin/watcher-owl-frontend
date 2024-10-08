@@ -1,7 +1,7 @@
 import { createContext, useState, ReactNode, useEffect } from "react";
 import { userContextType, userType } from "../types/types";
-import { expiresAfterThisManyHours } from "../utils/setExpirationDate";
 import { addOrRetrieveUserFromDatabase } from "../services/user.services";
+import { useAuth } from "../hooks/custom.hooks";
 
 const UserContext = createContext<userContextType>({
     user: undefined,
@@ -11,18 +11,18 @@ const UserContext = createContext<userContextType>({
 });
 
 function UserContextProvider({ children }: { children: ReactNode }) {
+    const { setToken } = useAuth();
+
     const [user, setUser] = useState<userType | undefined>(undefined);
     const [userMenuVisibility, setUserMenuVisibility] = useState(false);
 
     useEffect(() => {
         async function onPageReload() {
+
             const userInSessionStorage = JSON.parse(
                 sessionStorage.getItem(`userSession`) as string
             );
-            if (
-                userInSessionStorage?.isLoggedIn &&
-                userInSessionStorage?.sessionExpirationDate > Date.now()
-            ) {
+            if (userInSessionStorage?.isLoggedIn) {
                 const { given_name, email, picture, isLoggedIn, userId } =
                     userInSessionStorage;
 
@@ -31,7 +31,6 @@ function UserContextProvider({ children }: { children: ReactNode }) {
                     given_name,
                     isLoggedIn,
                     picture,
-                    sessionExpirationDate: expiresAfterThisManyHours(24),
                     userId,
                 });
             }
@@ -43,16 +42,21 @@ function UserContextProvider({ children }: { children: ReactNode }) {
     useEffect(() => {
         async function addUser() {
             if (user && !user.userId) {
-                const _user = await addOrRetrieveUserFromDatabase(user);
+                const response = await addOrRetrieveUserFromDatabase(user);
+
+                const { _user, token } = response;
+
+                setToken(token);
 
                 setUser({
                     email: _user.email,
                     given_name: _user.given_name,
                     isLoggedIn: user.isLoggedIn,
                     picture: _user.picture,
-                    sessionExpirationDate: user.sessionExpirationDate,
                     userId: _user._id,
                 });
+
+                sessionStorage.setItem("token", token);
 
                 sessionStorage.setItem(
                     `userSession`,
@@ -61,14 +65,13 @@ function UserContextProvider({ children }: { children: ReactNode }) {
                         given_name: _user.given_name,
                         isLoggedIn: user.isLoggedIn,
                         picture: _user.picture,
-                        sessionExpirationDate: user.sessionExpirationDate,
                         userId: _user._id,
                     })
                 );
             }
         }
         addUser();
-    }, [user]);
+    }, [user, setToken]);
 
     return (
         <UserContext.Provider
