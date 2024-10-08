@@ -25,7 +25,7 @@ function TasksContextProvider({ children }: { children: ReactNode }) {
 
     useEffect(() => {
         async function getInfoAboutTasks() {
-            if (user && user.userId) {
+            if (user?.userId) {
                 setTasksLoading(true);
 
                 const userTasks = await getUserTasks(user?.userId as string);
@@ -36,7 +36,7 @@ function TasksContextProvider({ children }: { children: ReactNode }) {
             }
         }
         getInfoAboutTasks();
-    }, [user, user?.userId]);
+    }, [user?.userId]);
 
     return (
         <TaskContext.Provider

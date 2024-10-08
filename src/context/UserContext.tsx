@@ -2,8 +2,6 @@ import { createContext, useState, ReactNode, useEffect } from "react";
 import { userContextType, userType } from "../types/types";
 import { expiresAfterThisManyHours } from "../utils/setExpirationDate";
 import { addOrRetrieveUserFromDatabase } from "../services/user.services";
-import { getUserTasks } from "../services/tasks.services";
-import { useTasks } from "../hooks/custom.hooks";
 
 const UserContext = createContext<userContextType>({
     user: undefined,
@@ -15,28 +13,6 @@ const UserContext = createContext<userContextType>({
 function UserContextProvider({ children }: { children: ReactNode }) {
     const [user, setUser] = useState<userType | undefined>(undefined);
     const [userMenuVisibility, setUserMenuVisibility] = useState(false);
-    const { setTasks } = useTasks();
-
-    useEffect(() => {
-        async function addUser() {
-            if (user) {
-                const _user = await addOrRetrieveUserFromDatabase(user);
-
-                sessionStorage.setItem(
-                    `userSession`,
-                    JSON.stringify({
-                        email: _user.email,
-                        given_name: _user.given_name,
-                        isLoggedIn: user.isLoggedIn,
-                        picture: _user.picture,
-                        sessionExpirationDate: user.sessionExpirationDate,
-                        userId: _user._id,
-                    })
-                );
-            }
-        }
-        addUser();
-    }, [user]);
 
     useEffect(() => {
         async function onPageReload() {
@@ -59,14 +35,40 @@ function UserContextProvider({ children }: { children: ReactNode }) {
                     userId,
                 });
             }
-
-            const userTasks = await getUserTasks(userInSessionStorage.userId);
-
-            setTasks(userTasks);
         }
 
         onPageReload();
     }, []);
+
+    useEffect(() => {
+        async function addUser() {
+            if (user && !user.userId) {
+                const _user = await addOrRetrieveUserFromDatabase(user);
+
+                setUser({
+                    email: _user.email,
+                    given_name: _user.given_name,
+                    isLoggedIn: user.isLoggedIn,
+                    picture: _user.picture,
+                    sessionExpirationDate: user.sessionExpirationDate,
+                    userId: _user._id,
+                });
+
+                sessionStorage.setItem(
+                    `userSession`,
+                    JSON.stringify({
+                        email: _user.email,
+                        given_name: _user.given_name,
+                        isLoggedIn: user.isLoggedIn,
+                        picture: _user.picture,
+                        sessionExpirationDate: user.sessionExpirationDate,
+                        userId: _user._id,
+                    })
+                );
+            }
+        }
+        addUser();
+    }, [user]);
 
     return (
         <UserContext.Provider
