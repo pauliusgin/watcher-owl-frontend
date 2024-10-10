@@ -16,8 +16,8 @@ function TaskControlsMenu({
                 taskId={taskId}
             />
             <TaskActivationButton />
-            <TaskDeleteButton />
             <TaskNotificationSelect />
+            <TaskDeleteButton />
         </div>
     );
 }

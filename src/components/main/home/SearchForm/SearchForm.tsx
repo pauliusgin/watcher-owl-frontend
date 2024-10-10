@@ -24,8 +24,6 @@ const SearchForm = () => {
 
             const sessionName = inputTextArray?.join("+");
 
-            // TODO pagal search query nustatomas location objekto search propsas ir
-            // TODO uždedamas "sessionName" state
             navigate(`/results/search?q=${sessionName}`, {
                 state: { sessionName: sessionName },
             });
