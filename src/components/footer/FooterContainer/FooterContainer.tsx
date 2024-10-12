@@ -3,14 +3,10 @@ import "./FooterContainer.scss";
 function Footer() {
     return (
         <footer className="footer">
-            <div className="footer__placeholder"></div>
-            <div className="footer__vinted-link">
-                <a href="https://www.vinted.lt/" target="_blank">
-                    placeholder
-                </a>
-            </div>
+                <p className="footer__app-version">alpha build: v0.0.1</p>
+                <p className="footer__text">Nuomonės ir pageidavimai: <a href="mailto:paulius000@gmail.com" className="footer__email">paulius000@gmail.com</a></p>
         </footer>
     );
 }
 
-export {Footer};
+export { Footer };

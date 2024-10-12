@@ -78,11 +78,6 @@ function TaskNotificationSelect({ taskId }: TaskNotificationSelectProps) {
                         value={Notification.EMAIL}>
                         E-paštas
                     </option>
-                    <option
-                        className="main__tasks_task_controls_notification-select-option"
-                        value={Notification.SMS}>
-                        SMS
-                    </option>
                 </select>
             </label>
         </>
