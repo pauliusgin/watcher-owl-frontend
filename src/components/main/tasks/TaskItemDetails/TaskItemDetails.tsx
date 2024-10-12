@@ -85,10 +85,12 @@ function TaskItemDetails() {
                                 <p className="main__tasks_task_item-details_item-status">{`Būklė: ${item?.status}`}</p>
                                 <p className="main__tasks_task_item-details_item-status">{`Įkelta: ${new Date(
                                     item?.timestamp * 1000
-                                ).toLocaleDateString("lt-LT", {
+                                ).toLocaleString("lt-LT", {
                                     year: "numeric",
                                     month: "long",
                                     day: "2-digit",
+                                    hour: "2-digit",
+                                    minute: "2-digit"
                                 })}`}</p>
                             </div>
                         </div>
