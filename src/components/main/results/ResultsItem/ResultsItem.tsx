@@ -39,7 +39,7 @@ function ResultsItem() {
                                   className="main__results_item-title-link"
                                   href={item?.url}
                                   target="_blank">
-                                  <h4 className="main__results_item-title">{`Pavadinimas: ${item?.title}`}</h4>
+                                  <h4 className="main__results_item-title">{`${item?.title}`}</h4>
                               </a>
                               <p className="main__results_item-price">
                                   {`Kaina: ${item?.price} ${item?.currency}`}
@@ -47,10 +47,12 @@ function ResultsItem() {
                               <p className="main__results_item-status">{`Būklė: ${item?.status}`}</p>
                               <p className="main__results_item-status">{`Įkelta: ${new Date(
                                   item?.timestamp * 1000
-                              ).toLocaleDateString("lt-LT", {
+                              ).toLocaleString("lt-LT", {
                                   year: "numeric",
                                   month: "long",
                                   day: "2-digit",
+                                  hour: "2-digit",
+                                  minute: "2-digit"
                               })}`}</p>
                           </div>
                       </div>
