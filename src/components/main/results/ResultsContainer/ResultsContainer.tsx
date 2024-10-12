@@ -19,7 +19,7 @@ function ResultsContainer() {
 
     if (data && data.length === 0) {
         return (
-            <p>
+            <p className="main__results_no-results">
                 {`Pagal užklausą `}
                 <span className="main__results_query-span">
                     {searchQuery?.join(", ")}

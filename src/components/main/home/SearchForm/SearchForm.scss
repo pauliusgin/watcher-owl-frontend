@@ -7,12 +7,12 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    min-width: 18rem;
+    min-width: 280px;
     max-width: 36rem;
     @include for-sizes-up-from(sm) {
         width: 70vw;
     }
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 1rem 0.5rem 1.3rem;
     margin-bottom: 2rem;
 
     &:hover {
@@ -40,6 +40,7 @@
 
     &_icon {
         height: 1.5rem;
+        width: 1.5rem;
         fill: $foreground-inactive;
     }
 
@@ -55,11 +56,16 @@
         }
     }
 
+    &_off-button-container {
+        width: 2rem;
+    }
+
     &_off-button {
         @include buttonDefault;
         @include buttonDark;
         @include offButton;
         @include tabFocusOutline;
+        color: $grey-300;
     }
 
     &_separator-container {
@@ -73,13 +79,35 @@
 
     &_button,
     #form-submit-button {
-        width: 4rem;
+        display: flex;
+        align-items: center;
         height: 1.5rem;
         color: $foreground-inactive;
         background-color: $background;
+
+        &:hover {
+            & .search__form_icon {
+                fill: $yellow-300;
+            }
+        }
+        &:active {
+            & .search__form_icon {
+                fill: $yellow-100;
+            }
+        }
     }
+
     & #search-form-submit-button {
         @include buttonDefault;
         @include tabFocusOutline;
+    }
+}
+
+.search-form-submit-button-text {
+    display: none;
+
+    @include for-sizes-up-from(xsm) {
+        display: block;
+        margin-left: 0.5rem;
     }
 }

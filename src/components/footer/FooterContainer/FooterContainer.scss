@@ -1,28 +1,48 @@
 @use "../../../styles/variables.scss" as *;
+@use "../../../styles/mixins.scss" as *;
 
 .footer {
-    height: 4rem;
-    padding: 1rem;
+    min-height: 4rem;
+    padding: 1rem 1rem;
     border-top: 1px solid $background-active;
     display: flex;
+    flex-direction: column-reverse;
     align-items: center;
-    justify-content: space-between;
+	gap: 0.5rem;
     flex-shrink: 0;
+	@include for-sizes-up-from(xsm) {
+		flex-direction: row;
+		justify-content: space-between;
+	}
 
     &__app-version {
         color: $foreground-placeholder;
     }
 
     &__text {
-        color: $foreground-inactive;
-    }
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		@include for-sizes-up-from(xsm) {
+			align-items: flex-end;
+		}
+		@include for-sizes-up-from(md) {
+			flex-direction: row;
+			&-email {
+				margin-left: 0.5rem;
+			}
+		}
+        &-text {
+            color: $foreground-inactive;
+        }
 
-    &__email {
-		margin-left: 1rem;
-        color: $foreground-inactive;
+        &-email {
+            color: $foreground-inactive;
 
-        &:hover {
-            color: $white;
+            &:hover {
+                color: $white;
+            }
         }
     }
 }
