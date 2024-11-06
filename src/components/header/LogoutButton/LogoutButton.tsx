@@ -20,10 +20,10 @@ const LogoutButton = () => {
             googleLogout();
 
             setToken(undefined);
-            sessionStorage.removeItem("token");
+            localStorage.removeItem("token");
 
             setUser(undefined);
-            sessionStorage.removeItem("userSession");
+            localStorage.removeItem("userSession");
 
             navigate("/");
         } catch (error) {

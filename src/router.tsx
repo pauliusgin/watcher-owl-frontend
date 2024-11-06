@@ -24,13 +24,13 @@ const RouterWrapper = () => {
     const [pageLoading, setPageLoading] = useState<boolean>(true);
 
     useEffect(() => {
-        const sessionToken = sessionStorage.getItem("token");
+        const localToken = localStorage.getItem("token");
 
-        if (!sessionToken) {
+        if (!localToken) {
             setPageLoading(false);
         }
 
-        if (sessionToken || token) {
+        if (localToken || token) {
             setPageLoading(false);
         }
     }, [token]);

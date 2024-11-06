@@ -21,7 +21,7 @@ function AuthContextProvider({ children }: { children: ReactNode }) {
     const [token, setToken] = useState<string>();
 
     useEffect(() => {
-        const token = sessionStorage.getItem("token");
+        const token = localStorage.getItem("token");
         if (token) {
             setToken(token);
         }

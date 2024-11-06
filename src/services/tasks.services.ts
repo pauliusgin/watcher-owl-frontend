@@ -38,7 +38,7 @@ async function addTaskToDatabase({
     notification,
     items,
 }: saveTaskInput) {
-    const token = sessionStorage.getItem("token");
+    const token = localStorage.getItem("token");
 
     try {
         const response = await fetch(`${config.backend.server}/api/v1/tasks/`, {
@@ -69,7 +69,7 @@ async function addTaskToDatabase({
 }
 
 async function deleteTask(taskId: string) {
-    const token = sessionStorage.getItem("token");
+    const token = localStorage.getItem("token");
 
     try {
         const response = await fetch(
@@ -95,7 +95,7 @@ async function deleteTask(taskId: string) {
 }
 
 async function getUserTasks(userId: string) {
-    const token = sessionStorage.getItem("token");
+    const token = localStorage.getItem("token");
 
     try {
         const response = await fetch(
@@ -119,7 +119,7 @@ async function getUserTasks(userId: string) {
 }
 
 async function getTaskById(taskId: string) {
-    const token = sessionStorage.getItem("token");
+    const token = localStorage.getItem("token");
 
     try {
         const response = await fetch(
@@ -144,7 +144,7 @@ async function getTaskById(taskId: string) {
 }
 
 async function toggleTaskActivity(taskId: string, isActive: boolean) {
-    const token = sessionStorage.getItem("token");
+    const token = localStorage.getItem("token");
 
     try {
         const response = await fetch(
@@ -173,7 +173,7 @@ async function selectNotificationMethod(
     taskId: string,
     notification: Notification
 ) {
-    const token = sessionStorage.getItem("token");
+    const token = localStorage.getItem("token");
 
     try {
         const response = await fetch(

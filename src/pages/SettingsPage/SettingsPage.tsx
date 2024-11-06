@@ -16,6 +16,7 @@ function SettingsPage() {
             deleteUserFromDatabase(user);
 
             sessionStorage.clear();
+            localStorage.clear();
 
             setUser(undefined);
             setToken(undefined);

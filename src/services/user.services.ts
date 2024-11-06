@@ -6,7 +6,7 @@ async function addOrRetrieveUserFromDatabase({
     email,
     picture,
 }: userType) {
-    const token = sessionStorage.getItem("token");
+    const token = localStorage.getItem("token");
 
     try {
         const response = await fetch(`${config.backend.server}/api/v1/users/`, {
@@ -31,7 +31,7 @@ async function addOrRetrieveUserFromDatabase({
 }
 
 async function deleteUserFromDatabase({ email }: userType) {
-    const token = sessionStorage.getItem("token");
+    const token = localStorage.getItem("token");
 
     try {
         const response = await fetch(`${config.backend.server}/api/v1/users`, {

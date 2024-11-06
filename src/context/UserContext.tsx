@@ -19,12 +19,12 @@ function UserContextProvider({ children }: { children: ReactNode }) {
     useEffect(() => {
         async function onPageReload() {
 
-            const userInSessionStorage = JSON.parse(
-                sessionStorage.getItem(`userSession`) as string
+            const userInLocalStorage = JSON.parse(
+                localStorage.getItem(`userSession`) as string
             );
-            if (userInSessionStorage?.isLoggedIn) {
+            if (userInLocalStorage?.isLoggedIn) {
                 const { given_name, email, picture, isLoggedIn, userId } =
-                    userInSessionStorage;
+                    userInLocalStorage;
 
                 setUser({
                     email,
@@ -56,9 +56,9 @@ function UserContextProvider({ children }: { children: ReactNode }) {
                     userId: _user._id,
                 });
 
-                sessionStorage.setItem("token", token);
+                localStorage.setItem("token", token);
 
-                sessionStorage.setItem(
+                localStorage.setItem(
                     `userSession`,
                     JSON.stringify({
                         email: _user.email,
