@@ -56,4 +56,11 @@
             }
         }
     }
+
+    &_task-controls_container {
+        display: flex;
+        gap: 0.1rem;
+        align-items: last baseline;
+        border-bottom: 1px solid $background-active;
+    }
 }

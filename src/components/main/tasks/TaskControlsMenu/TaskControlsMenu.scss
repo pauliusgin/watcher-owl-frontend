@@ -11,9 +11,6 @@
     top: -60px;
     right: 0;
     width: 100px;
-    @include for-sizes-up-from(xsm) {
-        display: none;
-    }
 
     .main__tasks_task_controls_activation-button,
     .main__tasks_task_controls_delete-button,

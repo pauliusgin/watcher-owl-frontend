@@ -28,10 +28,8 @@ type tasksContextType = {
     setTasksLoading: Dispatch<SetStateAction<boolean>>;
     saveSuccessful: boolean;
     setSaveSuccessful: Dispatch<SetStateAction<boolean>>;
-    taskControlsVisibility: { [key: string]: boolean };
-    setTaskControlsVisibility: Dispatch<
-        SetStateAction<{ [key: string]: boolean }>
-    >;
+    taskControlsVisibility: boolean;
+    setTaskControlsVisibility: Dispatch<SetStateAction<boolean>>;
 };
 
 type resultsItemType = {

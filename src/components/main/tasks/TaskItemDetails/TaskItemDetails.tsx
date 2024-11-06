@@ -8,8 +8,8 @@ import { TaskActivationButton } from "../TaskActivationButton/TaskActivationButt
 import { TaskDeleteButton } from "../TaskDeleteButton/TaskDeleteButton";
 import { TaskNotificationSelect } from "../TaskNotificationSelect/TaskNotificationSelect";
 
-interface TaskDetails {
-    id: string;
+export interface TaskDetails {
+    _id: string;
     search: string;
     isActive: boolean;
     notification: Notification;

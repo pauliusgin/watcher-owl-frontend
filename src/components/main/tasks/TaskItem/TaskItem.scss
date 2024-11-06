@@ -54,44 +54,9 @@
                 height: 100%;
                 object-fit: cover;
             }
-        }
-    }
 
-    &_controls {
-        position: relative;
-        min-width: 100px;
-        display: flex;
-        align-items: flex-end;
-        gap: 1rem;
-        @include for-sizes-up-from(sm) {
-            padding-right: 1rem;
-        }
-
-        &_controls-button {
-            @include for-sizes-up-from(xsm) {
-                display: none;
-            }
-        }
-
-        &_activation-button {
-            display: none;
-            @include for-sizes-up-from(xsm) {
-                display: flex;
-            }
-        }
-
-        &_delete-button {
-            display: none;
-            @include for-sizes-up-from(xsm) {
-                display: flex;
-            }
-        }
-
-        &_notification-select,
-        &_notification-select-label-span {
-            display: none;
-            @include for-sizes-up-from(xsm) {
-                display: flex;
+            &-link img {
+                border-radius: 10px;
             }
         }
     }

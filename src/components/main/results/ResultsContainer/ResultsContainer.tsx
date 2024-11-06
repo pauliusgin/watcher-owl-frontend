@@ -4,14 +4,24 @@ import { SortingMenu } from "../SortingMenu/SortingMenu";
 import { LoadingAnimation } from "../../../shared/LoadingAnimation/LoadingAnimation";
 import { useData, useTasks, useAuth } from "../../../../hooks/custom.hooks";
 import { TaskSaveButton } from "../../tasks/TaskSaveButton/TaskSaveButton";
+import { TaskActivationButton } from "../../tasks/TaskActivationButton/TaskActivationButton";
+import { TaskNotificationSelect } from "../../tasks/TaskNotificationSelect/TaskNotificationSelect";
+import { TaskDetails } from "../../tasks/TaskItemDetails/TaskItemDetails";
+import { useState } from "react";
 
 function ResultsContainer() {
     const { searchQuery, data, sessionData, isLoading } = useData();
-    const { saveSuccessful } = useTasks();
+    const { saveSuccessful, taskControlsVisibility } = useTasks();
     const { token } = useAuth();
+
+    const [taskDetails, setTaskDetails] = useState<TaskDetails | null>(null);
 
     const location = useLocation();
     const sessionNameDecoded = decodeURIComponent(location.state.sessionName);
+
+    const handleSaveResult = (result: TaskDetails) => {
+        setTaskDetails(result);
+    };
 
     if (isLoading) {
         return <LoadingAnimation />;
@@ -41,6 +51,7 @@ function ResultsContainer() {
                         data === sessionData ? data.length : sessionData?.length
                     }) užklausai:`}
                     <br />
+                    <br />
                     <span className="main__results_query-span">
                         {sessionNameDecoded.replaceAll("+", ", ")}
                     </span>
@@ -48,7 +59,9 @@ function ResultsContainer() {
                 <div className="main__results_save-search_container">
                     {token ? (
                         <>
-                            <TaskSaveButton />
+                            {!taskControlsVisibility && (
+                                <TaskSaveButton onSave={handleSaveResult} />
+                            )}
                             {saveSuccessful && (
                                 <p className="main__results_save-search_container_confirmation">
                                     Paieška išsaugota. Ją peržiūrėti galite
@@ -70,6 +83,14 @@ function ResultsContainer() {
                                 {` prisijungti.`}
                             </NavLink>
                         </p>
+                    )}
+                </div>
+                <div className="main__results_task-controls_container">
+                    {token && taskControlsVisibility && (
+                        <>
+                            <TaskActivationButton taskId={taskDetails?._id} />
+                            <TaskNotificationSelect taskId={taskDetails?._id} />
+                        </>
                     )}
                 </div>
                 <Outlet />

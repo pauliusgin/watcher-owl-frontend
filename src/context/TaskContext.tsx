@@ -10,7 +10,7 @@ const TaskContext = createContext<tasksContextType>({
     setTasksLoading: () => {},
     saveSuccessful: false,
     setSaveSuccessful: () => {},
-    taskControlsVisibility: {},
+    taskControlsVisibility: false,
     setTaskControlsVisibility: () => {},
 });
 
@@ -18,9 +18,7 @@ function TasksContextProvider({ children }: { children: ReactNode }) {
     const [tasks, setTasks] = useState<saveTaskOutput[] | undefined>(undefined);
     const [tasksLoading, setTasksLoading] = useState<boolean>(false);
     const [saveSuccessful, setSaveSuccessful] = useState(false);
-    const [taskControlsVisibility, setTaskControlsVisibility] = useState<{
-        [key: string]: boolean;
-    }>({});
+    const [taskControlsVisibility, setTaskControlsVisibility] = useState<boolean>(false);
     const { user } = useUser();
 
     useEffect(() => {

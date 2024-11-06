@@ -23,7 +23,14 @@
         }
     }
 
-    &-image a {
+    &-image {
+        a {
         @include tabFocusOutline;
-    }
+        }
+
+        img {
+            border-radius: 10px;
+        }
+
+}
 }

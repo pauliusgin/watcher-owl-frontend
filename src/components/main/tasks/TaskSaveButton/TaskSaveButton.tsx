@@ -9,12 +9,22 @@ import { DefaultButton } from "../../../shared/DefaultButton/DefaultButton";
 import { Notification } from "../../../../types/enumsAndInterfaces";
 import { resultsItemType } from "../../../../types/types";
 import { useEffect } from "react";
+import { TaskDetails } from "../TaskItemDetails/TaskItemDetails";
 
-const TaskSaveButton = () => {
+const TaskSaveButton = ({
+    onSave,
+}: {
+    onSave?: (result: TaskDetails) => void;
+}) => {
     const { user } = useUser();
     const { token } = useAuth();
     const { data, searchQuery } = useData();
-    const { setTasks, saveSuccessful, setSaveSuccessful } = useTasks();
+    const {
+        setTasks,
+        saveSuccessful,
+        setSaveSuccessful,
+        setTaskControlsVisibility,
+    } = useTasks();
 
     async function handleSaveTask() {
         if (token) {
@@ -38,8 +48,13 @@ const TaskSaveButton = () => {
 
             if (result) {
                 setSaveSuccessful(true);
+                setTaskControlsVisibility(true);
                 const allTasks = await getUserTasks(user?.userId as string);
                 setTasks(allTasks);
+
+                if (onSave) {
+                    onSave(result);
+                }
             }
         }
     }
@@ -53,6 +68,10 @@ const TaskSaveButton = () => {
             return () => clearTimeout(timer);
         }
     }, [saveSuccessful, setSaveSuccessful]);
+
+    useEffect(() => {
+        setTaskControlsVisibility(false);
+    }, []);
 
     return (
         <DefaultButton

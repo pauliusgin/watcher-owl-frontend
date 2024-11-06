@@ -49,10 +49,7 @@ async function addTaskToDatabase({
             },
             body: JSON.stringify({
                 userId,
-                search:
-                    search && search.length > 3
-                        ? search.slice(0, 3).join("+")
-                        : search?.join("+"),
+                search: search?.join("+"),
                 isActive,
                 notification,
                 items: items && items.length > 10 ? items?.slice(0, 10) : items,
