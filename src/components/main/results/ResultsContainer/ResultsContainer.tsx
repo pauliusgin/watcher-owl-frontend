@@ -59,9 +59,7 @@ function ResultsContainer() {
                 <div className="main__results_save-search_container">
                     {token ? (
                         <>
-                            {!taskControlsVisibility && (
-                                <TaskSaveButton onSave={handleSaveResult} />
-                            )}
+                            <TaskSaveButton onSave={handleSaveResult} />
                             {saveSuccessful && (
                                 <p className="main__results_save-search_container_confirmation">
                                     Paieška išsaugota. Ją peržiūrėti galite
